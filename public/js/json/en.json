@@ -1,0 +1,248 @@
+{
+    "header": {
+        "0": {
+            "label": "Home",
+            "id": "home",
+            "url": "home"
+        },
+        "1": {
+            "label": "About",
+            "id": "about",
+            "url": "about"
+        },
+        "2": {
+            "label": "Portfolio",
+            "id": "portfolio",
+            "url": "portfolio"
+        },
+        "3": {
+            "label": "Contact me",
+            "id": "contact",
+            "url": "contact"
+        }
+    },
+    "home": {
+        "hello": "Hi, i'm",
+        "charge": "<i>Fullstack</i> web developer"
+    },
+    "about": {
+        "main_title": "About me",
+        "about_me": "Hi, I'm Manuel, my profession has been to develop web applications both frontend and backend. I do functions such as user needs analysis, database schema development, server code development and optimization, and visual part analysis and development to make the user have a pleasant experience. I currently live in La Paz, Baja California Sur, I like music (rock and metal), a good coffee and a good pizza. In my free time I usually write code, play competitive and cooperative video games, exercise in the afternoons and study at <span class='platzi'>Platzi</span>.",
+        "subtitles": {
+            "0": "Activities and skills",
+            "1": "My dev stack"
+        },
+        "stack": {
+            "0": {
+                "label": "Figma",
+                "hasImage": true,
+                "imageUrl": "https://cdn.worldvectorlogo.com/logos/figma-1.svg",
+                "class": null,
+                "description": "Sometimes as a frontend developer I take the liberty to enter this app and make high level mockups of the apps I develop, in such a way that when I pass to the code I already have a base to accommodate the information."
+            },
+            "1": {
+                "label": "SASS/SCSS",
+                "hasImage": false,
+                "imageUrl": null,
+                "class": "fab fa-sass",
+                "description": "When I first entered the world of Web Development I was fascinated by using CSS, looking at how a web page took shape was very exciting. As I grew older I realized that pure CSS is not enough and I chose to use SASS to take advantage of the benefits of certain programming fundamentals to distribute styles into functions and variables."
+            },
+            "2": {
+                "label": "Vue.js",
+                "hasImage": false,
+                "imageUrl": null,
+                "class": "fab fa-vuejs",
+                "description": "This great framework quickly became my main JavaScript framework after seeing how fast and certain I could create interfaces."
+            },
+            "3": {
+                "label": "Laravel",
+                "hasImage": false,
+                "imageUrl": null,
+                "class": "fab fa-laravel",
+                "description": "One of the reasons why I learned Vue.js is Laravel, because knowing how to manipulate the back - end needed the best way to consume the information in the front - end. Laravel has become my favorite PHP framework for back-end development simply because I can do it quickly and make use of object-oriented programming to distribute the functionality within the app structure."
+            }
+        }
+    },
+    "portfolio": {
+        "main_title": "Portfolio",
+        "visit": "Visit site",
+        "projects": {
+            "0": {
+                "work_title": "Instituto Estatal Electoral de Baja California Sur",
+                "work_done": "Mobile frontend and backend refactor",
+                "work_year": "2019",
+                "background_img": "/img/ieebcs2019.png",
+                "url": "https://www.ieebcs.org.mx",
+                "hasUrl": true,
+                "description": "In this work we made a redesign for mobile devices and changed the internal code of the website from PHP 5 to Laravel 5.7, maintaining the database that has been used since its founding and creating models and controllers to use it.\nWithin the functionality for the mobile front end the Bootstrap 4 was passed, using Material Design was adjusted to the standard of the same leaving the navigation the website from a cell phone to a tablet in a friendly way.",
+                "evidence": {
+                    "0": {
+                        "img": "/img/evidencias/ieebcs2019/home.png"
+                    },
+                    "1": {
+                        "img": "/img/evidencias/ieebcs2019/homeWithMenu.png"
+                    },
+                    "2": {
+                        "img": "/img/evidencias/ieebcs2019/sesiones.png"
+                    },
+                    "3": {
+                        "img": "/img/evidencias/ieebcs2019/noticia.png"
+                    }
+                }
+            },
+            "1": {
+                "work_title": "Intranet - IEEBCS",
+                "work_done": "User interface redesign, and conversion from PHP5 to PHP7 and Laravel.",
+                "work_year": "2019",
+                "background_img": "/img/intranet2019.png",
+                "url": null,
+                "hasUrl": false,
+                "description": "Here a total makeover to an internet app of the website was performed to perform Content management. Like the website, PHP5 was converted to PHP7 and Laravel maintaining the database that has been used since the first version of the institutional website.",
+                "evidence": {
+                    "0": {
+                        "img": "/img/evidencias/intranet2019/dashboard.png"
+                    },
+                    "1": {
+                        "img": "/img/evidencias/intranet2019/dashboard2.png"
+                    },
+                    "2": {
+                        "img": "/img/evidencias/intranet2019/consultas.png"
+                    },
+                    "3": {
+                        "img": "/img/evidencias/intranet2019/consultasConFiltro.png"
+                    },
+                    "4": {
+                        "img": "/img/evidencias/intranet2019/crear1.png"
+                    },
+                    "5": {
+                        "img": "/img/evidencias/intranet2019/crear2.png"
+                    },
+                    "6": {
+                        "img": "/img/evidencias/intranet2019/cargarDocumento.png"
+                    }
+                }
+            },
+            "2": {
+                "work_title": "Rediseño de Sistemas Internos",
+                "work_done": "A redesign was carried out for a series of internal use systems to give a more modern touch.",
+                "work_year": "2019",
+                "background_img": "/img/rediee2019.png",
+                "url": null,
+                "hasUrl": false,
+                "description": "Here a total redesign of the internal systems was done to give a better user experience and to improve the internal code of the user.\nCreated with Laravel 5.7, Bootstrap 4 and SCSS.",
+                "evidence": {
+                    "0": {
+                        "img": "/img/evidencias/rediee2019/login.png"
+                    },
+                    "1": {
+                        "img": "/img/evidencias/rediee2019/dashboard.png"
+                    }
+                }
+            },
+            "3": {
+                "work_title": "Mini Sitio de Transparencia 2019",
+                "work_done": "It was refactored from AngularJS to Vue.js.",
+                "work_year": "2019",
+                "background_img": "/img/dtaispe2019.png",
+                "url": "https://www.ieebcs.org.mx/DTAISPE",
+                "hasUrl": true,
+                "description": "When the institutional website was passed completely, this mini site was reworked taking advantage of modern technologies such as Vue.js, ECMAScript 6 and Laravel 5.7.",
+                "evidence": {
+                    "0": {
+                        "img": "/img/evidencias/dtaispe2019/landing.png"
+                    },
+                    "1": {
+                        "img": "/img/evidencias/dtaispe2019/informacion.png"
+                    },
+                    "2": {
+                        "img": "/img/evidencias/dtaispe2019/art75.png"
+                    },
+                    "3": {
+                        "img": "/img/evidencias/dtaispe2019/informacionMovil.png"
+                    },
+                    "4": {
+                        "img": "/img/evidencias/dtaispe2019/art75Movil.png"
+                    }
+                }
+            },
+            "4": {
+                "work_title": "Mini Sitio de Cómputos Oficiales 2018",
+                "work_done": "Creation of a mini site for the sample of the results obtained in the elections of the Local Electoral Process 2017 - 2018",
+                "work_year": "2018",
+                "background_img": "/img/computos2018.png",
+                "url": "https://www.ieebcs.org.mx/ResultadosOficiales2018/#/",
+                "hasUrl": true,
+                "description": "In this mini site a site was created to display the results obtained in the elections of July 1, 2018. Made with AngularJS JSON type objects were collected for the automated deployment of information.",
+                "evidence": {
+                    "0": {
+                        "img": "/img/evidencias/computos2018/landing.png"
+                    },
+                    "1": {
+                        "img": "/img/evidencias/computos2018/resultadosGenerales.png"
+                    },
+                    "2": {
+                        "img": "/img/evidencias/computos2018/resultadoMunicipal.png"
+                    },
+                    "3": {
+                        "img": "/img/evidencias/computos2018/resultadosSecciones.png"
+                    },
+                    "4": {
+                        "img": "/img/evidencias/computos2018/resultadosCasillas.png"
+                    }
+                }
+            },
+            "5": {
+                "work_title": "Internal use apps 2018",
+                "work_done": "Various applications generated during the Local Election Process 2017 - 2018",
+                "work_year": "2018",
+                "background_img": "/img/rediee2019.png",
+                "url": null,
+                "hasUrl": false,
+                "description": "During the Electoral Process 2017 - 2018 I had to make various applications, from taking control of the sessions held in the various offices throughout the state of Baja California Sur, to the application to make the registration of candidates and candidates who participated in the committees of July 1.",
+                "evidence": {
+                    "0": {
+                        "img": "/img/evidencias/rediee2018/sisese1.png"
+                    },
+                    "1": {
+                        "img": "/img/evidencias/rediee2018/sisese2.png"
+                    },
+                    "2": {
+                        "img": "/img/evidencias/rediee2018/sisese3.png"
+                    }
+                }
+            },
+            "6": {
+                "work_title": "Instituto Estatal Electoral de Baja California Sur",
+                "work_done": "Redesign of the institutional website",
+                "work_year": "2017 - 2018",
+                "background_img": "/img/ieebcs2018.png",
+                "url": "https://heredado.ieebcs.org.mx",
+                "hasUrl": true,
+                "description": "In this work we made the conversion of a purely PHP site to a Vista-Controller Model capable separation, having as backend PHP and frontend AngularJS.",
+                "evidence": {
+                    "0": {
+                        "img": "/img/evidencias/ieebcs2018/homeDesktop.png"
+                    },
+                    "1": {
+                        "img": "/img/evidencias/ieebcs2018/sesiones.png"
+                    },
+                    "2": {
+                        "img": "/img/evidencias/ieebcs2018/noticias.png"
+                    },
+                    "3": {
+                        "img": "/img/evidencias/ieebcs2018/homeMovil.png"
+                    },
+                    "4": {
+                        "img": "/img/evidencias/ieebcs2018/sesionesMovil.png"
+                    },
+                    "5": {
+                        "img": "/img/evidencias/ieebcs2018/noticiasMovil.png"
+                    }
+                }
+            }
+        }
+    },
+    "contact": {
+        "main_title": "Contact me"
+    }
+}

@@ -1,0 +1,34 @@
+#contact {
+    padding-top: 90px;
+    padding-bottom: 30px;
+
+    .contact-link {
+        color: $secondary;
+        transition: all ease 150ms;
+    }
+
+    .linkedin {
+        &:hover {
+            color: $primary;
+        }
+    }
+
+    .gmail {
+        &:hover {
+            color: red;
+        }
+    }
+
+    .phone {
+        &:hover {
+            color: $p-dark;
+        }
+    }
+
+    .github {
+        &:hover {
+            color: $negro;
+        }
+    }
+
+}

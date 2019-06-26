@@ -1,0 +1,44 @@
+{
+    "0": {
+        "at": "Instituto Estatal de Baja California Sur",
+        "from": 2017,
+        "to": "present",
+        "job": "Programmer Analyst",
+        "responsabilities": {
+            "0": "Obtain system requirements according to the user's needs",
+            "1": "Creating new strategies for detect and solving problems",
+            "2": "Developing wireframes and task flows based on user needs",
+            "3": "Using UI/UX to made products",
+            "4": "Creating apps with Laravel, Vue.js and CSS3 with SASS",
+            "5": "Optimize code",
+            "6": "Make documentation of the generated code",
+            "7": "Train the personnel assigned to use the application."
+        }
+    },
+    "1": {
+        "at": "Juniper Data Center",
+        "from": 2016,
+        "to": 2017,
+        "job": "Content Loader",
+        "responsabilities": {
+            "0": "Generate the content of a website",
+            "1": "Give the styles of the pages according to the standards of the website",
+            "2": "Team management",
+            "3": "Make QA to HTML code and LESS"
+        }
+    },
+    "2": {
+        "at": "Instituto Estatal de Baja California Sur",
+        "from": 2014,
+        "to": 2015,
+        "job": "Programmer Analyst",
+        "responsabilities": {
+            "0": "Obtain system requirements according to the user's needs",
+            "1": "Creating new strategies for detect and solving problems",
+            "2": "Creating apps with jQuery, HTML5, PHP5 and CSS3",
+            "3": "Optimize code",
+            "4": "Make documentation of the generated code",
+            "5": "Train the personnel assigned to use the application."
+        }
+    }
+}

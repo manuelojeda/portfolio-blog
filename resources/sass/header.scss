@@ -1,0 +1,100 @@
+@import './variables';
+
+.social-header {
+    @extend .navbar;
+    @extend .navbar-expand-lg;
+    @extend .navbar-light;
+
+    background-color: $p-dark;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    display: flex !important;
+
+    .container {
+        .navbar-brand {
+            color: $blanco;
+
+            display: none;
+
+            @media (min-width: 768px) {
+                display: inline;
+            }
+        }
+
+        .social-links {
+            //@extend .ml-auto;
+            //@extend .mr-auto;
+            margin-left: auto;
+            margin-right: auto;
+
+            .social-list {
+                list-style-type: none;
+                padding-left: 0;
+
+                .nav-item {
+                    float: left;
+
+                    a.nav-link {
+                        color: $blanco;
+                    }
+                }
+
+                @media(min-width: 768px) {
+                    float: right;
+                    margin: 0;
+                }
+            }
+        }
+
+    }
+}
+
+.navbar-light.bg-light {
+    background-color: $primary !important;
+
+    button.navbar-toggler {
+        border-color: $blanco;
+
+        i.fas.fa-bars {
+            font-size: 28px;
+            color: $blanco;
+        }
+    }
+
+    .collapse {
+        .navbar-nav {
+            .nav-item {
+                @extend .mx-2;
+
+                .nav-link {
+                    color: $blanco;
+                    font-weight: 300;
+                    transition: all ease .15s;
+
+                    &:hover {
+                        border-bottom: 2px solid $blanco;
+                    }
+                }
+
+                .nav-link.active {
+                    font-weight: 700;
+                    border-bottom: 2px solid $blanco;
+                }
+            }
+        }
+    }
+
+    .lang {
+        transition: all ease .2s;
+
+        &:hover {
+            background-color: $secondary;
+            color: $blanco;
+        }
+    }
+
+    .lang-active {
+        background-color: $s-dark;
+        color: $blanco;
+    }
+}
