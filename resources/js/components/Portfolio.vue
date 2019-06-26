@@ -24,15 +24,9 @@
 </template>
 
 <script>
-import portfolioJson from "@/json/portfolio.json";
-import PortfolioItem from "@/components/Modals/PortfolioItem.vue";
-
 export default {
   name: "portfolio",
   props: ["text"],
-  components: {
-    PortfolioItem
-  },
   data() {
     return {
       portfolio_gallery: {

@@ -24,9 +24,7 @@
       <h3 class="text-center mb-3 animated fadeInUp">Professional</h3>
       <div class="experience-card" v-for="(item, index) in professional" :key="index">
         <h5 class="title">
-          {{
-          item.job
-          }}
+          {{item.job}}
           <br>
           <span>{{item.at}}</span>
         </h5>
@@ -41,8 +39,6 @@
 </template>
 
 <script>
-import educationJson from "@/json/education.json";
-import professionalJson from "@/json/professional.json";
 export default {
   name: "experience",
   data() {

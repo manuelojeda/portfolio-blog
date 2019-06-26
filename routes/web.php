@@ -14,3 +14,19 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/Blog', 'BlogController@index');
+Route::get('/Blog/{seo}', 'BlogController@show');
+Auth::routes();
+
+
+Route::get('/admin', 'AdminController@index')->name('admin');
+Route::get('/admin/create', 'AdminController@create')->name('admin');
+Route::post('/admin/store', 'AdminController@store')->name('admin');
+Route::put('/admin/{id}', 'AdminController@update')->name('admin');
+Route::get('/admin/{id}/edit', 'AdminController@edit')->name('admin');
+
+Route::get('/{vue_capture?}', function(){
+    return view('welcome');
+})->where('vue_capture','[\/\w\.-]*');

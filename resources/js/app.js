@@ -1,32 +1,55 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+import Vue from "vue";
+import axios from "axios";
+import VueAxios from "vue-axios";
+import BootstrapVue from "bootstrap-vue";
+import VueSweetalert2 from 'vue-sweetalert2';
 
-require('./bootstrap');
+Vue.use(VueSweetalert2);
+require("./admin");
 
-window.Vue = require('vue');
+import store from "./store";
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+axios.defaults.headers.get["Content-Type"] = "application/json";
+axios.defaults.headers.get["Cache-Control"] = "no-cache";
 
-// const files = require.context('./', true, /\.vue$/i);
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
+Vue.config.productionTip = false;
+Vue.use(VueAxios, axios);
+Vue.use(BootstrapVue);
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+if (navigator.languages[1] == "es") {
+    store.commit("updateLanguage", "es");
+} else {
+    store.commit("updateLanguage", "en");
+}
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+/*
+import PartialHeader from "./layouts/PartialHeader.vue";
+import PartialHome from "./layouts/PartialHome.vue";
+import PortfolioItem from "./components/Modals/PortfolioItem.vue";
+import EvidenceCarousel from "@/components/EvidenceCarousel.vue";
+*/
 
-const app = new Vue({
-    el: '#app',
+Vue.component("app", require("./components/App.vue").default);
+Vue.component("blogs", require("./components/Blogs.vue").default);
+Vue.component("blog", require("./components/Blog.vue").default);
+Vue.component("partial-header", require("./layouts/PartialHeader.vue").default);
+Vue.component("header-blog", require("./layouts/HeaderBlog.vue").default);
+Vue.component("partial-home", require("./layouts/PartialHome.vue").default);
+Vue.component("home", require("./components/Home.vue").default);
+Vue.component("about", require("./components/About.vue").default);
+Vue.component("portfolio", require("./components/Portfolio.vue").default);
+Vue.component("contact", require("./components/Contact.vue").default);
+
+Vue.component(
+    "portfolio-item",
+    require("./components/Modals/PortfolioItem.vue").default
+);
+Vue.component(
+    "evidence-carousel",
+    require("./components/EvidenceCarousel.vue").default
+);
+
+new Vue({
+    el: "#app",
+    store
 });

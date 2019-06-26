@@ -1,7 +1,7 @@
 <template>
   <div class="row align-items-center" id="home" @focus="setActive('home')">
     <div class="col-lg-6">
-      <img src="../assets/profile_pic.jpg" alt="Profile Pic" class="profilePic">
+      <img src="/img/profile_pic.jpg" alt="Profile Pic" class="profilePic">
     </div>
     <div class="col-lg-6">
       <div class="hello">

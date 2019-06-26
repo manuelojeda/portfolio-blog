@@ -30,7 +30,6 @@
 </template>
 
 <script>
-import EvidenceCarousel from "@/components/EvidenceCarousel.vue";
 export default {
   props: {
     "selected-portfolio": {
@@ -39,9 +38,6 @@ export default {
     button_label: {
       type: String
     }
-  },
-  components: {
-    EvidenceCarousel
   }
 };
 </script>

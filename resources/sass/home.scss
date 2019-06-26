@@ -23,12 +23,12 @@
 
         span {
             background-color: $s-light;
-            color: $white;
+            color: $blanco;
             padding: 5px 15px;
             margin-bottom: 10px;
             border-top-left-radius: 7px;
             border-bottom-right-radius: 7px;
-            box-shadow: 1px 1px 1px $black;
+            box-shadow: 1px 1px 1px $negro;
         }
 
         @media(min-width: 992px) {

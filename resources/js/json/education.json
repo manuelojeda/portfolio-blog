@@ -1,0 +1,16 @@
+{
+    "0": {
+        "school": "Platzi",
+        "from": 2017,
+        "to": "present",
+        "degree": "Learning new techniques and much more",
+        "description": "Since a professional never stops learning, I made the decision to start my update of processes and technologies to not be left behind."
+    },
+    "1": {
+        "school": "Instituto Técnologico de La Paz",
+        "from": 2009,
+        "to": 2014,
+        "degree": "Computer System Enginner",
+        "description": "Aimed at solving problems from the analysis of the same through the selection of the appropriate methodology. Coordinating database, selecting the ideal programming language, the platform to be developed, etc."
+    }
+}
