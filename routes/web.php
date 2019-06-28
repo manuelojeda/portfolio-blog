@@ -24,7 +24,9 @@ Auth::routes();
 Route::get('/admin', 'AdminController@index')->name('admin');
 Route::get('/admin/create', 'AdminController@create')->name('admin');
 Route::post('/admin/store', 'AdminController@store')->name('admin');
+Route::post('/admin/setState', 'AdminController@setState')->name('admin');
 Route::put('/admin/{id}', 'AdminController@update')->name('admin');
+Route::delete('/admin/{id}', 'AdminController@delete')->name('admin');
 Route::get('/admin/{id}/edit', 'AdminController@edit')->name('admin');
 
 Route::get('/{vue_capture?}', function(){

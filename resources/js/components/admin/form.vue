@@ -118,8 +118,8 @@ export default {
         data: this.form
       }).then(response => {
         this.$swal({
-          type: response.data.band,
-          text: respopnse.data.message,
+          type: response.data.type,
+          text: response.data.message,
           allowOutsideClick: false,
           allowEscapeKey: false
         }).then(() => {

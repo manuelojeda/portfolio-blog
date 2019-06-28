@@ -2,6 +2,6 @@
 
 @section('content')
 <div class="container">
-    <admin-create></admin-create>
+    <admin-form></admin-form>
 </div>
 @endsection

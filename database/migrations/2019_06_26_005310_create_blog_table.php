@@ -19,6 +19,7 @@ class CreateBlogTable extends Migration
             $table->longText('content');
             $table->text('seo');
             $table->text('thumbnail')->nullable();
+            $table->boolean('publish')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

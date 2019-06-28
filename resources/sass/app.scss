@@ -9,6 +9,7 @@
 @import './experience.scss';
 @import './portfolio.scss';
 @import './contact.scss';
+@import './blog.scss';
 
 body {
     font-family: 'Roboto', sans-serif;
@@ -107,23 +108,5 @@ body {
         text-decoration: none !important;
     }
 
-    .blog-card {
-        .card {
-            .card-body {
-                color: $secondary;
-                transition: all ease .35s;
-            }
-        }
 
-        &:hover {
-            .card {
-                box-shadow: 1px 1px 5px 1px #777;
-
-                .card-body {
-                    background-color: $secondary;
-                    color: #fff;
-                }
-            }
-        }
-    }
 }
