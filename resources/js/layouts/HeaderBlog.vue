@@ -104,7 +104,7 @@
               <a class="nav-link" href="/en/Manuel-Ojeda-CV.pdf" target="_blank" v-else>CURRICULUM</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/Blog">BLOG</a>
+              <a class="nav-link active" href="/Blog">BLOG</a>
             </li>
           </ul>
 

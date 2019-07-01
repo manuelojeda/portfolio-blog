@@ -76,4 +76,39 @@
         }
     }
 
+    #entriesTable {
+
+        thead {
+            display: none;
+        }
+
+        tr>td {
+            border: none !important
+        }
+
+        a.row {
+            transition: all ease .2s;
+
+            .thumbnailDiv {
+                padding: 0 !important;
+                transition: all ease .2s;
+            }
+
+            .infoDiv {
+                background-color: $secondary;
+                padding: 10px;
+                color: white;
+                transition: all ease .2s;
+            }
+
+            &:hover {
+                box-shadow: 1px 1px 5px 1px #777;
+
+                .infoDiv {
+                    background-color: $s-dark;
+                }
+            }
+        }
+    }
+
 }
