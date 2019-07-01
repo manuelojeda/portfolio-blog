@@ -9,10 +9,10 @@ use App\Models\Blog;
 class BlogController extends Controller
 {
     public function index() {
-        $blogs = Blog::select(['title','seo','thumbnail','content'])->where('publish','=','1')->orderBy('created_at','desc')->get();
+        $blogs = Blog::select(['title','seo','thumbnail','content','created_at'])->where('publish','=','1')->orderBy('created_at','desc')->get();
         foreach ($blogs as $blog) {
             $created_at = new Date($blog->created_at);
-            $blog->formattedFecha = $created_at->format('d-M-Y');
+            $blog->formattedFecha = $created_at->format('d-M-Y H:i');
         }
         return view('blogs', compact('blogs'));
     }
@@ -22,7 +22,7 @@ class BlogController extends Controller
             abort('404');
         }
         $created_at = new Date($blog->created_at);
-        $blog->formattedFecha = $created_at->format('d-M-Y');
+        $blog->formattedFecha = $created_at->format('d-M-Y H:i');
         
         return view('blog', compact('blog'));
     }

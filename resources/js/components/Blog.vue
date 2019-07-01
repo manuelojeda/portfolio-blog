@@ -8,13 +8,16 @@
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item">
+                <a href="/">Inicio</a>
+              </li>
+              <li class="breadcrumb-item">
                 <a href="/Blog">Blog</a>
               </li>
               <li class="breadcrumb-item active" aria-current="page">{{blog.title}}</li>
             </ol>
           </nav>
 
-          <a href="/Blog">Volver</a>
+          <a href="/Blog" class="btn btn-primary">Volver</a>
 
           <h1 class="titulo mt-4">{{blog.title}}</h1>
           <p>Publicado: {{blog.formattedFecha}}</p>

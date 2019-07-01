@@ -7,18 +7,61 @@
         <div class="col-12 mb-4">
           <h1 class="titulo">Bienvenido a mi blog</h1>
         </div>
-        <div class="col-12 col-lg-4 blog-card" v-for="(blog, index) in blogs" :key="index">
-          <a :href="'/Blog/' + blog.seo" class="card">
-            <div class="card-header p-0">
-              <img :src="blog.thumbnail" alt class="img-fluid mx-auto d-block">
+      </div>
+      <div class="row">
+        <div class="col-12 mb-4">
+          <div class="table__input__search">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text mr-3">Buscar</div>
+              </div>
+              <input type="text" class="form-control" v-model="buscar" placeholder>
             </div>
-            <div class="card-body">
-              <h4 class="card-title">{{blog.title}}</h4>
-              <p>Publicado: {{blog.formattedFecha}}</p>
-            </div>
-          </a>
+          </div>
         </div>
-        <div class="col-12" v-show="blogs.length === 0">
+
+        <div class="col-12" v-if="blogs.length > 0">
+          <b-table
+            :filter="buscar"
+            showEmpty
+            :items="blogs"
+            :fields="fields"
+            :perPage="7"
+            :currentPage="currentPage"
+            class="entriesDiv"
+            id="entriesTable"
+          >
+            <template slot="single" slot-scope="entry">
+              <a :href="'/' + entry.item.seo" class="row mb-3">
+                <div class="col-12 col-lg-4 thumbnailDiv">
+                  <img :src="entry.item.thumbnail" alt class="img-fluid">
+                </div>
+                <div class="col-12 col-lg-8 infoDiv">
+                  <h3>{{entry.item.title}}</h3>
+                  <h4>
+                    <small>Publicado el {{entry.item.formattedFecha}}</small>
+                  </h4>
+                </div>
+              </a>
+            </template>
+            <template slot="empty" slot-scope="scope">
+              <h4>Entradas no encontradas</h4>
+            </template>
+            <template slot="emptyfiltered" slot-scope="scope">
+              <h4>Entradas no encontradas</h4>
+            </template>
+          </b-table>
+
+          <b-pagination
+            v-model="currentPage"
+            :total-rows="blogs.length"
+            :per-page="7"
+            aria-controls="entriesTable"
+            align="right"
+          ></b-pagination>
+        </div>
+
+        <div class="col-12" v-else>
           <h3>Hola, bienvenido a mi blog, por el momento no tengo entradas, vuelve más tarde para que leas sobre mis aventuras.</h3>
         </div>
       </div>
@@ -32,7 +75,14 @@ export default {
   props: ["blogs-props"],
   data() {
     return {
-      blogs: JSON.parse(this.blogsProps)
+      blogs: JSON.parse(this.blogsProps),
+      buscar: "",
+      fields: {
+        single: {
+          label: ""
+        }
+      },
+      currentPage: 1
     };
   },
   created() {
@@ -55,6 +105,17 @@ export default {
         }
       });
     });
+  },
+  computed: {
+    filteredBlogs() {
+      if (this.buscar) {
+        return this.blogs.filter(item => {
+          return item.title.includes(this.buscar);
+        });
+      } else {
+        return this.blogs;
+      }
+    }
   }
 };
 </script>
