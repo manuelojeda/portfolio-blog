@@ -12,31 +12,35 @@
 @import './blog.scss';
 
 body {
-    font-family: 'Roboto', sans-serif;
 
     h1 {
         font-size: 42.72px !important;
+        font-family: 'Open Sans', sans-serif;
     }
 
     h2 {
         font-size: 34.18 !important;
+        font-family: 'Open Sans', sans-serif;
     }
 
     h3 {
         font-size: 27.34px !important;
+        font-family: 'Open Sans', sans-serif;
     }
 
     h4 {
         font-size: 21.88px !important;
+        font-family: 'Open Sans', sans-serif;
     }
 
     p {
         font-size: 14px !important;
+        font-family: 'Roboto', sans-serif;
     }
 
     pre {
         white-space: pre-line;
-        font-family: 'Roboto', sans-serif !important;
+        font-family: 'Open Sans', sans-serif !important;
     }
 
     .carousel {
@@ -108,5 +112,8 @@ body {
         text-decoration: none !important;
     }
 
-
+    .fixed-top {
+        position: sticky;
+        top: -40px;
+    }
 }

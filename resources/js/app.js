@@ -30,6 +30,7 @@ import EvidenceCarousel from "@/components/EvidenceCarousel.vue";
 */
 
 Vue.component("app", require("./components/App.vue").default);
+Vue.component("error-404", require("./components/404.vue").default);
 Vue.component("blogs", require("./components/Blogs.vue").default);
 Vue.component("blog", require("./components/Blog.vue").default);
 Vue.component("partial-header", require("./layouts/PartialHeader.vue").default);

@@ -10,7 +10,7 @@
           v-bind:key="index"
         >
           <figure @click="showPortfolioDescription(item)">
-            <img :src="item.background_img" alt class="img-portfolio">
+            <img :src="item.background_img" alt class="img-portfolio" />
             <section class="work__description">
               <p class="work__title">{{item.work_title}}</p>
               <p class="work__year">{{item.work_year}}</p>

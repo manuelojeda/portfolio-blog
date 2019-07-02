@@ -15,7 +15,7 @@
               <div class="input-group-prepend">
                 <div class="input-group-text mr-3">Buscar</div>
               </div>
-              <input type="text" class="form-control" v-model="buscar" placeholder>
+              <input type="text" class="form-control" v-model="buscar" placeholder />
             </div>
           </div>
         </div>
@@ -33,10 +33,10 @@
           >
             <template slot="single" slot-scope="entry">
               <a :href="'/Blog/' + entry.item.seo" class="row mb-3">
-                <div class="col-12 col-lg-4 thumbnailDiv">
-                  <img :src="entry.item.thumbnail" alt class="img-fluid">
+                <div class="col-12 col-sm-4 col-lg-3 thumbnailDiv">
+                  <img :src="entry.item.thumbnail" alt class="img-fluid" />
                 </div>
-                <div class="col-12 col-lg-8 infoDiv">
+                <div class="col-12 col-sm-8 col-lg-9 infoDiv">
                   <h3>{{entry.item.title}}</h3>
                   <h4>
                     <small>Publicado el {{entry.item.formattedFecha}}</small>
@@ -44,10 +44,10 @@
                 </div>
               </a>
             </template>
-            <template slot="empty" slot-scope="scope">
+            <template slot="empty">
               <h4>Entradas no encontradas</h4>
             </template>
-            <template slot="emptyfiltered" slot-scope="scope">
+            <template slot="emptyfiltered">
               <h4>Entradas no encontradas</h4>
             </template>
           </b-table>

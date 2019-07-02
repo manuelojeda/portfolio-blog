@@ -109,11 +109,11 @@
           </ul>
 
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
+            <li class="nav-item dropdown">
               <a
                 href="#"
                 id="dropdownMenuButton"
-                class="text-white"
+                class="nav-link dropdown-toggle text-white"
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"

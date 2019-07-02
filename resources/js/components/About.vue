@@ -5,7 +5,7 @@
     </div>
 
     <div class="col-12 col-lg-6 about_section">
-      <p class="text-center about_text" v-html="text.about_me"></p>
+      <p class="text-left about_text" v-html="text.about_me"></p>
     </div>
 
     <div class="col-12 col-lg-6">
@@ -75,10 +75,10 @@
           v-for="(item, index) in text.stack"
           :key="index"
         >
-          <img :src="item.imageUrl" alt class="img-logo" v-if="item.hasImage">
+          <img :src="item.imageUrl" alt class="img-logo" v-if="item.hasImage" />
           <i v-bind:class="item.class" v-else></i>
           <h4>{{item.label}}</h4>
-          <p v-html="item.description"></p>
+          <p class="text-left" v-html="item.description"></p>
         </div>
       </div>
     </div>

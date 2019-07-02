@@ -1,10 +1,10 @@
 .blog-main {
     .titulo {
-        font-weight: 600;
+        font-weight: 500;
     }
 
     .card-title {
-        font-weight: 500 !important;
+        font-weight: 600 !important;
     }
 
     .blog-card {
@@ -99,6 +99,10 @@
                 padding: 10px;
                 color: white;
                 transition: all ease .2s;
+
+                h3 {
+                    font-weight: 600;
+                }
             }
 
             &:hover {
