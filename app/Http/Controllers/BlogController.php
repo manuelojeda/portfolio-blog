@@ -25,8 +25,6 @@ class BlogController extends Controller
         $created_at = Date::parse($blog->updated_at)->timezone('America/Chihuahua');
         $blog->formattedFecha = $created_at->format('d-M-Y H:i');
 
-        
-        
         return view('blog', compact('blog'));
     }
 }
