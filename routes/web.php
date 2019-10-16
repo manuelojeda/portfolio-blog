@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/badges', 'BadgesController@index');
+Route::get('/badges/{id}', 'BadgesController@show');
+Route::delete('/badges/{id}', 'BadgesController@destroy');
+Route::post('/badges', 'BadgesController@store');
+
 
 Route::get('/Blog', 'BlogController@index');
 Route::get('/Blog/{seo}', 'BlogController@show');
