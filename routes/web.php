@@ -18,6 +18,7 @@ Route::get('/', function () {
 Route::get('/badges', 'BadgesController@index');
 Route::get('/badges/{id}', 'BadgesController@show');
 Route::delete('/badges/{id}', 'BadgesController@destroy');
+Route::put('/badges/{id}', 'BadgesController@update');
 Route::post('/badges', 'BadgesController@store');
 
 

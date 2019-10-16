@@ -37,4 +37,22 @@ class BadgesController extends Controller
         $badge->twitter = $data['twitter'];
         $badge->save();
     }
+    public function update($id, Request $request) {
+        $data = $request->validate([
+            'firstName' => 'string|required',
+            'lastName' => 'string|required',
+            'jobTitle' => 'string|required',
+            'email' => 'string|required',
+            'twitter' => 'string|required',
+        ]);
+
+        $badge = Badge::findOrFail($id);
+
+        $badge->firstName = $data['firstName'];
+        $badge->lastName = $data['lastName'];
+        $badge->jobTitle = $data['jobTitle'];
+        $badge->email = $data['email'];
+        $badge->twitter = $data['twitter'];
+        $badge->save();
+    }
 }
