@@ -25,16 +25,6 @@
       </div>
       <div class="col-6 col-lg-3 py-3">
         <a
-          href="https://wa.me/526121030271"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="contact-link phone"
-        >
-          <i class="fab fa-whatsapp fa-4x"></i>
-        </a>
-      </div>
-      <div class="col-6 col-lg-3 py-3">
-        <a
           href="https://github.com/manuelojeda"
           rel="noopener noreferrer"
           class="contact-link github"
