@@ -35,7 +35,11 @@
         <div class="col-12 mb-4">
           <div class="form-group">
             <label for="content">Content</label>
-            <textarea v-model="form.content" id="content" name="content"></textarea>
+            <textarea
+              v-model="form.content"
+              class="form-control"
+              rows="20"
+            ></textarea>
           </div>
         </div>
 
@@ -53,7 +57,7 @@
 
       <img :src="form.thumbnail" class="img-fluid">
 
-      <div v-html="form.content"></div>
+      <div v-html="preview"></div>
 
       <button type="submit" class="btn btn-primary btn-info" @click="save()">Save entry</button>
     </div>
@@ -61,6 +65,8 @@
 </template>
 
 <script>
+import MarkdownIt from 'markdown-it'
+
 export default {
   props: ["blog-prop", "band-edit"],
   data() {
@@ -71,22 +77,23 @@ export default {
         seo: "",
         thumbnail: "",
         content: ""
-      }
+      },
+      preview: null
     };
   },
   created() {
-    tinymce.init({
-      selector: "#content",
-      height: 450,
-      plugins: [
-        "advlist autolink lists link image charmap print preview hr anchor pagebreak",
-        "searchreplace wordcount visualblocks visualchars code fullscreen",
-        "insertdatetime media nonbreaking save table contextmenu directionality",
-        "emoticons template paste textcolor  colorpicker textpattern autoresize imagetools"
-      ],
-      toolbar:
-        "insertfile undo redo | forecolor backcolor | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link preview table"
-    });
+    // tinymce.init({
+    //   selector: "#content",
+    //   height: 450,
+    //   plugins: [
+    //     "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+    //     "searchreplace wordcount visualblocks visualchars code fullscreen",
+    //     "insertdatetime media nonbreaking save table contextmenu directionality",
+    //     "emoticons template paste textcolor  colorpicker textpattern autoresize imagetools"
+    //   ],
+    //   toolbar:
+    //     "insertfile undo redo | forecolor backcolor | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link preview table"
+    // });
 
     if (this.bandEdit === "1") {
       this.form = JSON.parse(this.blogProp);
@@ -94,7 +101,9 @@ export default {
   },
   methods: {
     previewContent() {
-      this.form.content = tinymce.activeEditor.getContent();
+      // this.form.content = tinymce.activeEditor.getContent();
+      const md = new MarkdownIt()
+      this.preview = md.render(this.form.content)
       this.bandPreview = !this.bandPreview;
     },
     save() {

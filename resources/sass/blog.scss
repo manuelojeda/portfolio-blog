@@ -70,9 +70,14 @@
     }
 
     .blog-body {
+        p {
+            font-size: 16px !important;
+        }
         img {
             max-width: 100% !important;
             height: auto !important;
+            display: block;
+            margin: 0 auto;
         }
     }
 
