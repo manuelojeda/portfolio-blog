@@ -32,7 +32,6 @@ class AdminController extends Controller
         if(\Auth::check()) {
             $data = $request->validate([
                 'title' => 'string|required',
-                'seo' => 'string|required',
                 'thumbnail' => 'string|required',
                 'content' => 'string|required'
             ]);

@@ -22,12 +22,6 @@
         </div>
         <div class="col-12 mb-3">
           <div class="form-group">
-            <label for="title">SEO</label>
-            <input v-model="form.seo" name="title" type="text" class="form-control">
-          </div>
-        </div>
-        <div class="col-12 mb-3">
-          <div class="form-group">
             <label for="title">Thumbnail URL</label>
             <input v-model="form.thumbnail" name="title" type="text" class="form-control">
           </div>
@@ -68,20 +62,19 @@
 import MarkdownIt from 'markdown-it'
 
 export default {
-  props: ["blog-prop", "band-edit"],
-  data() {
+  props: ['blog-prop', 'band-edit'],
+  data () {
     return {
       bandPreview: false,
       form: {
-        title: "",
-        seo: "",
-        thumbnail: "",
-        content: ""
+        title: '',
+        thumbnail: '',
+        content: ''
       },
       preview: null
-    };
+    }
   },
-  created() {
+  created () {
     // tinymce.init({
     //   selector: "#content",
     //   height: 450,
@@ -95,30 +88,30 @@ export default {
     //     "insertfile undo redo | forecolor backcolor | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link preview table"
     // });
 
-    if (this.bandEdit === "1") {
-      this.form = JSON.parse(this.blogProp);
+    if (this.bandEdit === '1') {
+      this.form = JSON.parse(this.blogProp)
     }
   },
   methods: {
-    previewContent() {
+    previewContent () {
       // this.form.content = tinymce.activeEditor.getContent();
       const md = new MarkdownIt()
       this.preview = md.render(this.form.content)
-      this.bandPreview = !this.bandPreview;
+      this.bandPreview = !this.bandPreview
     },
-    save() {
-      let html = `<p>Saving entry...</p>`;
+    save () {
+      const html = '<p>Saving entry...</p>'
       this.$swal({
         html,
         allowOutsideClick: false,
         allowEscapeKey: false,
         showConfirmButton: false
-      });
-      let method = "POST";
-      let url = "/admin/store";
-      if (this.bandEdit === "1") {
-        method = "PUT";
-        url = "/admin/" + this.form.id;
+      })
+      let method = 'POST'
+      let url = '/admin/store'
+      if (this.bandEdit === '1') {
+        method = 'PUT'
+        url = '/admin/' + this.form.id
       }
 
       this.$http({
@@ -133,13 +126,13 @@ export default {
           allowEscapeKey: false
         }).then(() => {
           if (response.data.band) {
-            window.location.href = "/admin";
+            window.location.href = '/admin'
           }
-        });
-      });
+        })
+      })
     }
   }
-};
+}
 </script>
 
 <style scoped>

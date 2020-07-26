@@ -6,5 +6,5 @@
 @section('pageUrl', url('/Blog'))
 
 @section('content')
-    <blogs blogs-props="{{$blogs}}"></blogs>
+    <blogs></blogs>
 @endsection

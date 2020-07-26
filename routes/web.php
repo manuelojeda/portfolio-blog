@@ -22,6 +22,7 @@ Route::put('/badges/{id}', 'BadgesController@update');
 Route::post('/badges', 'BadgesController@store');
 
 
+Route::get('/blog/paginate', 'BlogController@paginate');
 Route::get('/Blog', 'BlogController@index');
 Route::get('/Blog/{seo}', 'BlogController@show');
 Auth::routes();
