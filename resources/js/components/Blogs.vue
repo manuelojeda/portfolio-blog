@@ -1,8 +1,8 @@
 <template>
   <div class="blog-main">
-    <header-blog></header-blog>
+    <header-blog class="mb-3" />
 
-    <div class="container my-5">
+    <div class="container my-5 pt-5">
       <div class="row">
         <div class="col-12 mb-4">
           <h1 class="titulo">Bienvenido a mi blog</h1>
@@ -13,7 +13,7 @@
           <div class="table__input__search">
             <div class="input-group">
               <div class="input-group-prepend">
-                <div class="input-group-text mr-3">Buscar</div>
+                <div class="input-group-text">Buscar</div>
               </div>
               <input type="text" class="form-control" v-model="buscar" placeholder />
             </div>
@@ -86,25 +86,25 @@ export default {
     };
   },
   created() {
-    $(document).ready(function() {
-      $("a").on("click", function(event) {
-        if (this.hash !== "") {
-          event.preventDefault();
+    // $(document).ready(function() {
+    //   $("a").on("click", function(event) {
+    //     if (this.hash !== "") {
+    //       event.preventDefault();
 
-          var hash = this.hash;
+    //       var hash = this.hash;
 
-          $("html, body").animate(
-            {
-              scrollTop: $(hash).offset().top
-            },
-            800,
-            function() {
-              window.location.hash = hash;
-            }
-          );
-        }
-      });
-    });
+    //       $("html, body").animate(
+    //         {
+    //           scrollTop: $(hash).offset().top
+    //         },
+    //         800,
+    //         function() {
+    //           window.location.hash = hash;
+    //         }
+    //       );
+    //     }
+    //   });
+    // });
   },
   computed: {
     filteredBlogs() {

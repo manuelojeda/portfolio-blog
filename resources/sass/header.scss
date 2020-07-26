@@ -70,6 +70,7 @@
                     color: $blanco;
                     font-weight: 300;
                     transition: all ease .15s;
+                    border-bottom: 2px solid $primary;
 
                     &:hover {
                         border-bottom: 2px solid $blanco;

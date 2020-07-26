@@ -1,8 +1,8 @@
 <template>
   <div class="blog-main">
-    <header-blog></header-blog>
+    <header-blog class="mb-3" />
 
-    <div class="container my-5">
+    <div class="container my-5 pt-5">
       <div class="row">
         <div class="col-12">
           <nav aria-label="breadcrumb">
@@ -72,12 +72,11 @@ export default {
       content: null
     };
   },
+  // This is a comment
   created() {
     const md = new MarkdownIt()
     this.content = md.render(this.blog.content)
-    this.tweet =
-      `text=${this.blog.title}&url=https://manuelojeda.xyz/Blog/` +
-      this.blog.seo;
+    this.tweet = `text=${this.blog.title}&url=https://manuelojeda.xyz/Blog/${this.blog.seo}`
   }
 };
 </script>

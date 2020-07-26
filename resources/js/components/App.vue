@@ -9,7 +9,7 @@
 export default {
   name: "app",
   created() {
-    $(document).ready(function() {
+    /* $(document).ready(function() {
       $("a").on("click", function(event) {
         if (this.hash !== "") {
           event.preventDefault();
@@ -27,7 +27,7 @@ export default {
           );
         }
       });
-    });
+    }); */
   }
 };
 </script>

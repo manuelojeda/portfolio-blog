@@ -1,5 +1,5 @@
 <template>
-  <div class="row align-items-center" id="home" @focus="setActive('home')">
+  <div class="home row align-items-center" id="home" @focus="setActive('home')">
     <div class="col-lg-6">
       <img src="/img/profile_pic.jpg" alt="Profile Pic" class="profilePic">
     </div>
@@ -19,11 +19,6 @@
             manuelojedasistemas@gmail.com
           </a>
         </p>
-        <p class="mb-0 secondary">
-          <a href="tel:+526121030271">
-            <i class="fas fa-phone mr-2"></i>+ 52 6121030271
-          </a>
-        </p>
       </blockquote>
     </div>
   </div>
@@ -41,3 +36,12 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+#home {
+  margin-top: 10rem;
+  @media(min-width: 992px) {
+    margin-top: 0;
+  }
+}
+</style>

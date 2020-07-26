@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" id="nav-scroller" ref="content">
     <home :text="home"></home>
     <about :text="about"></about>
     <portfolio :text="portfolio"></portfolio>
