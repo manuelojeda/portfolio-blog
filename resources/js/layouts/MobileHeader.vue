@@ -1,43 +1,69 @@
 <template>
-  <div>
-    <b-navbar toggleable="lg" type="dark" variant="info">
-      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-      <b-collapse id="nav-collapse" is-nav>
-        <b-navbar>
-          <b-navbar-nav class="mx-auto">
-            <b-nav-item
-              v-for="(menu, index) in header" :key="index"
-              :href="`/#${menu.url}`"
-              class="weight-500"
-              :class="menu.id"
-            >
-              {{menu.label}}
-            </b-nav-item>
-            <b-nav-item
-              href="/Blog"
-              class="weight-500"
-            >
-              Blog
-            </b-nav-item>
-            <b-nav-item
-              href="/en/Manuel-Ojeda-CV.pdf"
-              target="_blank"
-              class="weight-500"
-            >
-              My CV
-            </b-nav-item>
-          </b-navbar-nav>
-        </b-navbar>
-      </b-collapse>
-    </b-navbar>
+  <div class="container py-4 mobile-header">
+    <b-row>
+      <b-col cols="12">
+        <slider
+          :width="300"
+          format="push"
+          direction="left"
+          :opacity="0.15"
+          :links="links">
+        </slider>
+      </b-col>
+    </b-row>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'MobileHeader',
-    props: {
-      header: Object,
-    },
+import Slider from '@jeremyhamm/vue-slider'
+
+export default {
+  name: 'MobileHeader',
+  props: {
+    header: Object
+  },
+  components: {
+    Slider
+  },
+  computed: {
+    links () {
+      const headerLinks = Object.values(this.header)
+      const links = headerLinks.map((link, index) => {
+        return {
+          id: index + 1,
+          text: link.label,
+          url: `/#${link.url}`
+        }
+      })
+
+      links.push({
+        id: 5,
+        text: 'Blog',
+        url: '/Blog'
+      })
+      links.push({
+        id: 6,
+        text: 'My CV',
+        url: '/en/Manuel-Ojeda-CV.pdf'
+      })
+      links.push({
+        id: 7,
+        text: 'Dev.to',
+        url: 'https://dev.to/manuelojeda'
+      })
+      links.push({
+        id: 8,
+        text: 'Twitter',
+        url: 'https://twitter.com/darkjeda'
+      })
+      links.push({
+        id: 9,
+        text: 'Linked In',
+        url: 'https://www.linkedin.com/in/manuel-alejandro-ojeda-ag%C3%BAndez-618753132/'
+      })
+
+      return links
+    }
   }
+}
 </script>

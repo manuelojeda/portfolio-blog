@@ -6,23 +6,23 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
+// import { mapGetters, mapMutations } from "vuex";
 import MobileHeader from './MobileHeader'
 import DesktopHeader from './DesktopHeader'
 
 export default {
-  name: "partial-header",
+  name: 'partial-header',
   components: {
     MobileHeader,
     DesktopHeader
   },
-  data() {
+  data () {
     return {
       header: {},
       lang: null
-    };
+    }
   },
-  created() {
+  created () {
     /* $(window).scroll(function() {
       if ($(window).scrollTop() > 98) {
         $("#header").addClass("fixed-top");
@@ -35,25 +35,25 @@ export default {
       $('[data-toggle="tooltip"]').tooltip();
     }); */
 
-    this.header = this.$store.getters.getJson.header;
-    this.lang = this.$store.getters.getLanguage;
+    this.header = this.$store.getters.getJson.header
+    this.lang = this.$store.getters.getLanguage
   },
   methods: {
-    setActive(clase) {
+    setActive (clase) {
       // $(".nav-link").removeClass("active");
       // $(".nav-link." + clase).addClass("active");
       // navLinks.map((link) => {
       //   console.log(link)
       // })
     },
-    setLang(lang) {
-      this.$store.commit("updateLanguage", lang);
+    setLang (lang) {
+      this.$store.commit('updateLanguage', lang)
 
-      this.header = this.$store.getters.getJson.header;
-      this.lang = this.$store.getters.getLanguage;
+      this.header = this.$store.getters.getJson.header
+      this.lang = this.$store.getters.getLanguage
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -62,9 +62,7 @@ export default {
   width: 100%;
   top: 0;
   z-index: 999;
-  @media(min-width: 768px) {
-    background-color: #fff;
-    border-bottom: 2px solid #00c9b6;
-  }
+  background-color: #fff;
+  border-bottom: 2px solid #00c9b6;
 }
 </style>

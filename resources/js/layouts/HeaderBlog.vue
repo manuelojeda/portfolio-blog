@@ -6,35 +6,36 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
+// eslint-disable-next-line no-unused-vars
+import { mapGetters, mapMutations } from 'vuex'
 import MobileHeader from './MobileHeader'
 import DesktopHeader from './DesktopHeader'
 
 export default {
-  name: "partial-header",
+  name: 'partial-header',
   components: {
     MobileHeader,
     DesktopHeader
   },
-  data() {
+  data () {
     return {
       header: {},
       lang: null
-    };
+    }
   },
-  created() {
-    this.header = this.$store.getters.getJson.header;
-    this.lang = this.$store.getters.getLanguage;
+  created () {
+    this.header = this.$store.getters.getJson.header
+    this.lang = this.$store.getters.getLanguage
   },
   methods: {
-    setLang(lang) {
-      this.$store.commit("updateLanguage", lang);
+    setLang (lang) {
+      this.$store.commit('updateLanguage', lang)
 
-      this.header = this.$store.getters.getJson.header;
-      this.lang = this.$store.getters.getLanguage;
+      this.header = this.$store.getters.getJson.header
+      this.lang = this.$store.getters.getLanguage
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

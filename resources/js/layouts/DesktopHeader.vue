@@ -33,6 +33,11 @@
               >
                 My CV
               </b-nav-item>
+              <b-nav-item-dropdown text="Social Media">
+                <b-dropdown-item href="https://dev.to/manuelojeda" target="_blank">Dev.to</b-dropdown-item>
+                <b-dropdown-item href="https://twitter.com/darkjeda" target="_blank">Twitter</b-dropdown-item>
+                <b-dropdown-item href="https://www.linkedin.com/in/manuel-alejandro-ojeda-ag%C3%BAndez-618753132/" target="_blank">Linked In</b-dropdown-item>
+              </b-nav-item-dropdown>
             </b-navbar-nav>
           </b-navbar>
         </div>
@@ -42,12 +47,12 @@
 </template>
 
 <script>
-  export default {
-    name: 'DesktopHeader',
-    props: {
-      header: Object,
-    },
+export default {
+  name: 'DesktopHeader',
+  props: {
+    header: Object
   }
+}
 </script>
 
 <style lang="scss" scoped>
