@@ -83,51 +83,51 @@
 <script>
 export default {
   props: {
-    "blogs-props": String
+    'blogs-props': String
   },
-  data() {
+  data () {
     return {
       blogs: [],
       fields: {
         id: {
-          label: "Id"
+          label: 'Id'
         },
         title: {
-          label: "Title"
+          label: 'Title'
         },
         options: {
-          label: "Options"
+          label: 'Options'
         }
       },
       perPage: 10,
       currentPage: 1,
-      filtering: ""
-    };
+      filtering: ''
+    }
   },
-  created() {
-    this.blogs = JSON.parse(this.blogsProps);
+  created () {
+    this.blogs = JSON.parse(this.blogsProps)
   },
   methods: {
-    setState(band, blog) {
-      let text = "Do you want to publish this entry?";
+    setState (band, blog) {
+      let text = 'Do you want to publish this entry?'
       if (!band) {
-        text = "Do you want to unpublish this entry?";
+        text = 'Do you want to unpublish this entry?'
       }
       this.$swal({
         text,
-        type: "question",
+        type: 'question',
         showCancelButton: true,
-        confirmButtonText: "Yes",
-        cancelButtonText: "No"
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No'
       }).then(result => {
         if (result.value) {
           const data = {
             id: blog.id,
             band
-          };
+          }
 
-          const method = "POST";
-          const url = "/admin/setState";
+          const method = 'POST'
+          const url = '/admin/setState'
 
           this.$http({
             url,
@@ -141,24 +141,24 @@ export default {
               allowEscapeKey: false
             }).then(() => {
               if (response.data.band) {
-                window.location.reload();
+                window.location.reload()
               }
-            });
-          });
+            })
+          })
         }
-      });
+      })
     },
-    deleteEntry(blog) {
+    deleteEntry (blog) {
       this.$swal({
-        text: "Are you sure to erase this entry? There is not turn back",
-        type: "warning",
+        text: 'Are you sure to erase this entry? There is not turn back',
+        type: 'warning',
         showCancelButton: true,
-        confirmButtonText: "Yes",
-        cancelButtonText: "No"
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No'
       }).then(result => {
         if (result.value) {
-          const method = "DELETE";
-          const url = "/admin/" + blog.id;
+          const method = 'DELETE'
+          const url = '/admin/' + blog.id
 
           this.$http({
             url,
@@ -171,15 +171,15 @@ export default {
               allowEscapeKey: false
             }).then(() => {
               if (response.data.band) {
-                window.location.reload();
+                window.location.reload()
               }
-            });
-          });
+            })
+          })
         }
-      });
+      })
     }
   }
-};
+}
 </script>
 
 <style scoped>
@@ -188,4 +188,3 @@ select {
   -webkit-appearance: menulist;
 }
 </style>
-

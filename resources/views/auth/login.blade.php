@@ -3,12 +3,19 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8 my-5">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
-
+                
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    {{-- <a href="/auth/github" class="btn btn-primary">
+                        Login with Github
+                    </a> --}}
+                    <a href="/auth/github" id="github-button" class="btn btn-block btn-social btn-github border">
+                        <i class="fab fa-github"></i> Sign in with Github
+                    </a>
+                    
+                    {{-- <form method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -64,7 +71,7 @@
                                 @endif
                             </div>
                         </div>
-                    </form>
+                    </form> --}}
                 </div>
             </div>
         </div>

@@ -1,6 +1,6 @@
 const mix = require('laravel-mix')
 require('laravel-mix-polyfill')
-
+require('laravel-mix-alias')
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -16,6 +16,9 @@ mix.js('resources/js/app.js', 'public/js')
   .sass('resources/sass/app.scss', 'public/css')
   .options({
     terser: {}
+  })
+  .alias({
+    '@': '/resources/js'
   })
   .extract()
   .version()

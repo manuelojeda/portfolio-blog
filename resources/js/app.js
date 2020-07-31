@@ -4,10 +4,12 @@ import VueAxios from 'vue-axios'
 import BootstrapVue from 'bootstrap-vue'
 import VueSweetalert2 from 'vue-sweetalert2'
 
+import './imports/admin'
+
 import store from './store'
 
 Vue.use(VueSweetalert2)
-require('./admin')
+// require('./admin')
 
 axios.defaults.headers.get['Content-Type'] = 'application/json'
 axios.defaults.headers.get['Cache-Control'] = 'no-cache'

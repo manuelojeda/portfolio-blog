@@ -28,10 +28,19 @@ Route::post('/badges', 'BadgesController@store');
 Route::get('/blog/paginate', 'BlogController@paginate');
 Route::get('/Blog', 'BlogController@index');
 Route::get('/Blog/{seo}', 'BlogController@show');
+
 Auth::routes();
 
 
-Route::get('/admin', 'AdminController@index')->name('admin');
+Route::get('/admin', 'Admin\DashboardController@index')->name('admin');
+// Route::get('/admin/home', 'Admin\DashboardController@index')->name('admin.home');
+
+Route::post('/admin/blogs/setStatus', 'Admin\BlogController@setStatus');
+Route::resource('/admin/blogs', 'Admin\BlogController');
+
+Route::get('auth/github', 'Auth\AuthController@redirectToProvider');
+Route::get('auth/github/callback', 'Auth\AuthController@handleProviderCallback');
+
 Route::get('/admin/create', 'AdminController@create')->name('admin');
 Route::post('/admin/store', 'AdminController@store')->name('admin');
 Route::post('/admin/setState', 'AdminController@setState')->name('admin');

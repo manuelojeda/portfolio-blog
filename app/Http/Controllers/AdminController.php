@@ -14,22 +14,20 @@ class AdminController extends Controller
     
 
     public function index() {
-        if(\Auth::check()) {
+        if(Auth()->check()) {
             $blogs = Blog::all();
-
             return view('admin.index', compact('blogs'));
         }
-
     }
 
     public function create() {
-        if(\Auth::check()) {
+        if(Auth()->check()) {
             return view('admin.create');
         }
     }
 
     public function store(Request $request) {
-        if(\Auth::check()) {
+        if(Auth()->check()) {
             $data = $request->validate([
                 'title' => 'string|required',
                 'thumbnail' => 'string|required',
@@ -59,14 +57,14 @@ class AdminController extends Controller
     }
 
     public function edit($id) {
-        if(\Auth::check()) {
+        if(Auth()->check()) {
             $blog = Blog::findOrFail($id);
             return view('admin.edit',compact('blog'));
         }
     }
     
     public function update($id, Request $request) {
-        if(\Auth::check()) {
+        if(Auth()->check()) {
             $data = $request->validate([
                 'title' => 'string|required',
                 'seo' => 'string|required',
@@ -97,7 +95,7 @@ class AdminController extends Controller
     }
 
     public function setState(Request $request) {
-        if(\Auth::check()) {
+        if(Auth()->check()) {
             $data = $request->validate([
                 'id' => 'integer|required',
                 'band' => 'boolean|required',
@@ -133,7 +131,7 @@ class AdminController extends Controller
     }
 
     public function delete($id) {
-        if(\Auth::check()) {
+        if(Auth()->check()) {
             $blog = Blog::findOrFail($id);
             if($blog->delete()){
                 $response = collect([
