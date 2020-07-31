@@ -13,6 +13,7 @@
         <meta name="theme-color" content="#017BB0">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/prism.css') }}">
     </head>
     <body>
         <div id="fb-root"></div>
@@ -21,6 +22,7 @@
         <div id="app">
             @yield('content')
         </div>
+        <script src="{{ asset('js/prism.js') }}"></script>
         <script src="{{ mix('js/manifest.js')}}"></script>
         <script src="{{ mix('js/vendor.js')}}"></script>
         <script src="{{ mix('js/app.js')}}"></script>

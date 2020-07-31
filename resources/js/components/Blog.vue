@@ -63,21 +63,20 @@
 import MarkdownIt from 'markdown-it'
 
 export default {
-  name: "app",
-  props: ["blog-prop"],
-  data() {
+  name: 'app',
+  props: ['blog-prop'],
+  data () {
     return {
       blog: JSON.parse(this.blogProp),
-      tweet: "",
+      tweet: '',
       content: null
-    };
+    }
   },
   // This is a comment
-  created() {
+  created () {
     const md = new MarkdownIt()
     this.content = md.render(this.blog.content)
     this.tweet = `text=${this.blog.title}&url=https://manuelojeda.xyz/Blog/${this.blog.seo}`
   }
-};
+}
 </script>
-
