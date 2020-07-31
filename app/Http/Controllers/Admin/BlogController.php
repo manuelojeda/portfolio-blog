@@ -17,7 +17,9 @@ class BlogController extends Controller
     {
         // dd(1);
         $blogs = Blog::all();
-        return view('admin.blogs.index', compact('blogs'));
+        
+        return view('admin.blogs.index')
+            ->with('blogs', $blogs);
     }
 
     public function create ()
