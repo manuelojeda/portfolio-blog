@@ -24,6 +24,34 @@ class BlogController extends Controller
     {
         return view('admin.blogs.create');
     }
+
+    public function store(Request $request) {
+        $data = $request->validate([
+            'title' => 'string|required',
+            'thumbnail' => 'string|required',
+            'content' => 'string|required'
+        ]);
+
+        $blog = new Blog($data);
+        $blog->publish = false;
+
+        if($blog->save()) {
+            $response = collect([
+                'band' => true,
+                'text' => 'Entry saved',
+                'icon' => 'success'
+            ]);
+        }
+        else{
+            $response = collect([
+                'band' => false,
+                'text' => 'There was a problem saving the entry',
+                'icon' => 'error'
+            ]);
+        }
+
+        return $response;
+    }
     
     public function edit (Blog $blog)
     {
@@ -42,14 +70,14 @@ class BlogController extends Controller
         if ($blog->update($data)) {
             return response()->json([
                 'band' => true,
-                'message' => 'Entry saved',
-                'type' => 'success'
+                'text' => 'Entry saved',
+                'icon' => 'success'
             ], 200);
         } else {
             return response()->json([
                 'band' => false,
-                'message' => 'There was a problem saving the entry',
-                'type' => 'error'
+                'text' => 'There was a problem saving the entry',
+                'icon' => 'error'
             ], 500);
         }
     }
