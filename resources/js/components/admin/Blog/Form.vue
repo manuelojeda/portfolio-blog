@@ -115,7 +115,7 @@ export default {
       })
 
       const method = this.isEdit ? 'PUT' : 'POST'
-      const url = this.isEdit ? `/admin/blogs/${this.blog.id}` : '/admin/blogs/'
+      const url = this.isEdit ? `/admin/blogs/${this.blog.id}` : '/admin/blogs'
 
       axios({
         url,
