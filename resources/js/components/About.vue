@@ -1,5 +1,5 @@
 <template>
-  <div class="row" id="about" @focus="setActive('about')">
+  <div class="row align-items-center" id="about" @focus="setActive('about')">
     <div class="col-12">
       <h1 class="title about_title" id="focus">{{text.main_title}}</h1>
     </div>
@@ -9,58 +9,18 @@
     </div>
 
     <div class="col-12 col-lg-6">
-      <h3 class="medium text-center p-dark">{{text.subtitles[0]}}</h3>
-      <div class="row text-center my-4">
-        <div class="col py-2">
-          <div class="d-inline skills">
-            <i class="fas fa-laptop fa-4x"></i>
-          </div>
-        </div>
-        <div class="col py-2">
-          <div class="d-inline skills">
-            <i class="fab fa-js-square fa-4x"></i>
-          </div>
-        </div>
-        <div class="col py-2">
-          <div class="d-inline skills">
-            <i class="fab fa-css3-alt fa-4x"></i>
-          </div>
-        </div>
-        <div class="col py-2">
-          <div class="d-inline skills">
-            <i class="fas fa-headphones-alt fa-4x"></i>
-          </div>
-        </div>
-        <div class="col py-2">
-          <div class="d-inline skills">
-            <i class="fas fa-gamepad fa-4x"></i>
-          </div>
-        </div>
-        <div class="col py-2">
-          <div class="d-inline skills">
-            <i class="fas fa-book fa-4x"></i>
-          </div>
-        </div>
-        <div class="col py-2">
-          <div class="d-inline skills">
-            <i class="fas fa-mug-hot fa-4x"></i>
-          </div>
-        </div>
-        <div class="col py-2">
-          <div class="d-inline skills">
-            <i class="fas fa-dumbbell fa-4x"></i>
-          </div>
-        </div>
-        <div class="col py-2">
-          <div class="d-inline skills">
-            <i class="fas fa-film fa-4x"></i>
-          </div>
-        </div>
-        <div class="col py-2">
-          <div class="d-inline skills">
-            <i class="fas fa-plane-departure fa-4x"></i>
-          </div>
-        </div>
+      <h3 class="medium text-center p-dark mb-3">{{text.subtitles[0]}}</h3>
+      <div class="grid-skills">
+        <i class="fas skills fa-laptop fa-3x" />
+        <i class="fab skills fa-js-square fa-3x" />
+        <i class="fab skills fa-css3-alt fa-3x" />
+        <i class="fas skills fa-headphones-alt fa-3x" />
+        <i class="fas skills fa-gamepad fa-3x" />
+        <i class="fas skills fa-book fa-3x" />
+        <i class="fas skills fa-mug-hot fa-3x" />
+        <i class="fas skills fa-dumbbell fa-3x" />
+        <i class="fas skills fa-film fa-3x" />
+        <i class="fas skills fa-plane-departure fa-3x" />
       </div>
     </div>
 
@@ -87,13 +47,25 @@
 
 <script>
 export default {
-  name: "about",
-  props: ["text"],
+  name: 'about',
+  props: ['text'],
   methods: {
-    setActive(clase) {
-      $(".nav-link").removeClass("active");
-      $(".nav-link." + clase).addClass("active");
+    setActive (clase) {
+      $('.nav-link').removeClass('active')
+      $('.nav-link.' + clase).addClass('active')
     }
   }
-};
+}
 </script>
+
+<style lang="scss" scoped>
+.grid-skills {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+
+  .fas, .fab {
+    text-align: center;
+  }
+}
+</style>

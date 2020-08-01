@@ -26,15 +26,15 @@
 
 <script>
 export default {
-  name: "home",
-  props: ["text"],
+  name: 'home',
+  props: ['text'],
   methods: {
-    setActive(clase) {
-      $(".nav-link").removeClass("active");
-      $(".nav-link." + clase).addClass("active");
+    setActive (clase) {
+      $('.nav-link').removeClass('active')
+      $('.nav-link.' + clase).addClass('active')
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

@@ -40,16 +40,16 @@
 
 <script>
 export default {
-  name: "experience",
-  data() {
+  name: 'experience',
+  data () {
     return {
       education: null,
       professional: null
-    };
+    }
   },
-  created() {
-    this.education = educationJson;
-    this.professional = professionalJson;
+  created () {
+    this.education = educationJson
+    this.professional = professionalJson
   }
-};
+}
 </script>
