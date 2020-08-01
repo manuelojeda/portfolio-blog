@@ -17,7 +17,12 @@ class Blog extends Model
 
     public function getCreatedAtAttribute ($value)
     {
-        return Carbon::parse($value)->format('d-M-Y');
+        return Carbon::parse($value)->format('d-m-Y H:i');
+    }
+
+    public function getPublishedAtAttribute ($value)
+    {
+        return Carbon::parse($value)->format('d-m-Y H:i');
     }
 
     public function getSlugOptions() : SlugOptions

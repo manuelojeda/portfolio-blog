@@ -4,6 +4,8 @@ import VueAxios from 'vue-axios'
 import BootstrapVue from 'bootstrap-vue'
 import VueSweetalert2 from 'vue-sweetalert2'
 
+import VueDisqus from 'vue-disqus'
+
 import './imports/admin'
 
 import store from './store'
@@ -51,6 +53,10 @@ Vue.component(
   'evidence-carousel',
   require('./components/EvidenceCarousel.vue').default
 )
+
+Vue.use(VueDisqus, {
+  shortname: process.env.MIX_DISQUS_WEBSITE
+})
 
 // eslint-disable-next-line no-new
 new Vue({

@@ -20,7 +20,12 @@
           <a href="/Blog" class="btn btn-primary">Volver</a>
 
           <h1 class="titulo mt-4">{{blog.title}}</h1>
-          <p>Publicado: {{blog.formattedFecha}}</p>
+          <p>
+            <b>
+              Publicado:
+            </b>
+            {{blog.published_at}}
+          </p>
 
           <div
             class="fb-share-button d-inline"
@@ -53,6 +58,10 @@
           -->
 
           <div class="my-4 blog-body" v-html="content"></div>
+
+          <div class='comments'>
+            <Disqus />
+          </div>
         </div>
       </div>
     </div>
