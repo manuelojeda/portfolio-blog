@@ -24,23 +24,20 @@ class BlogController extends Controller
     }
 
     public function show($seo) {
-        $blog = Blog::select(['title','seo','thumbnail','content','updated_at'])
+        $blog = Blog::select(['title','seo','thumbnail','content','published_at'])
             ->where('seo','=',$seo)->where('publish','=','1')
             ->first();
         
-        if($blog == null) {
+        if($blog === null) {
             abort('404');
         }
         
-        $created_at = Date::parse($blog->updated_at)->timezone('America/Chihuahua');
-        $blog->formattedFecha = $created_at->format('d-M-Y H:i');
-
         return view('blog', compact('blog'));
     }
 
     public function paginate ()
     {
-        $blogs = Blog::select(['title','seo','thumbnail','content','updated_at', 'created_at'])
+        $blogs = Blog::select(['title','seo','thumbnail','content','updated_at', 'published_at'])
             ->where('publish','=','1')
             ->orderBy('created_at','desc')
             ->paginate(8);

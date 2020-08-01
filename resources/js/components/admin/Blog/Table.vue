@@ -105,8 +105,16 @@ export default {
           key: 'title'
         },
         {
-          label: 'Estado',
+          label: 'Status',
           key: 'status'
+        },
+        {
+          label: 'Created at',
+          key: 'created_at'
+        },
+        {
+          label: 'Published at',
+          key: 'published_at'
         },
         {
           label: 'Opciones',

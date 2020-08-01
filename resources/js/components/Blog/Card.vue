@@ -10,7 +10,7 @@
           </h4>
           <p>
             <b>Fecha de publicación</b> <br />
-            {{blog.created_at}}
+            {{blog.published_at}}
           </p>
         </b-card-text>
       </b-card>

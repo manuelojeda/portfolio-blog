@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -110,7 +111,8 @@ class BlogController extends Controller
 
         $blog = Blog::findOrFail($request->id);
         $blog->publish = $request->status;
-
+        $blog->published_at = $request->status ? Carbon::parse()->now() : null;
+        
         if($blog->save()) {
             if ($request->status) {
                 $msg = 'Entry published';
