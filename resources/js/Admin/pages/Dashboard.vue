@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import PersonalIndex from '@/components/admin/Personal/Index.vue'
+import PersonalIndex from '@/Admin/components/Personal/Index.vue'
 
 export default {
   name: 'AdminDashboard',

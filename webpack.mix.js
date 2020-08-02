@@ -12,7 +12,8 @@ require('laravel-mix-alias')
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
+mix.js('resources/js/Public/app.js', 'public/js')
+  .ts('resources/js/Admin/admin.ts', 'public/js')
   .sass('resources/sass/app.scss', 'public/css')
   .options({
     terser: {}

@@ -9,18 +9,13 @@ module.exports = {
   ],
   parserOptions: {
     ecmaVersion: 11,
+    parser: '@typescript-eslint/parser',
     sourceType: 'module'
   },
   plugins: [
-    'vue'
+    'vue',
+    '@typescript-eslint'
   ],
   rules: {
-  },
-  settings: {
-    'import/resolver': {
-      alias: [
-        ['@', 'resources/js']
-      ]
-    }
   }
 }
