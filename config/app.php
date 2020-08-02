@@ -1,5 +1,5 @@
 <?php
-
+// phpcs:disable
 return [
 
     /*
@@ -15,6 +15,9 @@ return [
 
     'admin_mail' => env('ADMIN_MAIL'),
     'admin_key' => env('ADMIN_KEY'),
+    'dev_name' => env('DEV_NAME'),
+    'dev_position' => env('DEV_POSITION'),
+    'dev_email' => env('DEV_EMAIL'),
 
     'name' => env('APP_NAME', 'Laravel'),
 

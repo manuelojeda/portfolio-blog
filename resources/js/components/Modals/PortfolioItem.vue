@@ -32,12 +32,12 @@
 <script>
 export default {
   props: {
-    "selected-portfolio": {
+    selectedPortfolio: {
       type: Object
     },
     button_label: {
       type: String
     }
   }
-};
+}
 </script>

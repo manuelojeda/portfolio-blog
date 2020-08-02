@@ -49,13 +49,6 @@
               <i class="fab fa-twitter mr-2"></i>Tweet
             </a>
           </div>
-          <!--
-          <div class="d-inline">
-            <a class="subscribe-button" href="#" @click="suscribete()">
-              <i class="fas fa-envelope mr-2"></i>Suscríbete
-            </a>
-          </div>
-          -->
 
           <div class="my-4 blog-body" v-html="content"></div>
 
@@ -72,16 +65,16 @@
 import MarkdownIt from 'markdown-it'
 
 export default {
-  name: 'app',
-  props: ['blog-prop'],
+  name: 'Blog',
+  props: {
+    blog: Object
+  },
   data () {
     return {
-      blog: JSON.parse(this.blogProp),
       tweet: '',
       content: null
     }
   },
-  // This is a comment
   created () {
     const md = new MarkdownIt()
     this.content = md.render(this.blog.content)

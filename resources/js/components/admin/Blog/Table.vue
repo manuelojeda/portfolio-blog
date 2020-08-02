@@ -18,7 +18,7 @@
 
         <div class="col-12 col-md-6 mb-3">
           <div class="float-right">
-            <div class="input-group mb-2">
+            <div class="input-group my-2">
               <div class="input-group-prepend">
                 <div class="input-group-text mr-2">Search</div>
               </div>
@@ -53,12 +53,12 @@
       <template v-slot:cell(opciones)="blog">
         <a
           :href="`/admin/blogs/${blog.item.id}/edit`"
-          class="btn btn-info"
+          class="btn btn-info my-2"
         >
           Edit
         </a>
         <button
-          class="btn"
+          class="btn my-2"
           :class="{ 'btn-warning': blog.item.publish === 1, 'btn-success': blog.item.publish === 0 }"
           @click="handleSetEntryStatus(blog.item)"
         >
@@ -70,7 +70,7 @@
           </span>
         </button>
         <button
-          class="btn btn-danger"
+          class="btn btn-danger my-2"
           @click="handleDestroyEntry(blog.item)"
         >
           Destroy

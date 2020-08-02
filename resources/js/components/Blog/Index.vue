@@ -73,7 +73,6 @@ export default {
       this.result = await response.data
       this.isLoading = false
     } catch (error) {
-    } finally {
     }
   },
   methods: {
@@ -85,7 +84,6 @@ export default {
         this.result = await response.data
         this.isLoading = false
       } catch (error) {
-      } finally {
       }
     }
   }

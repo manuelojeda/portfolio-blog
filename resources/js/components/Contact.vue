@@ -39,7 +39,9 @@
 
 <script>
 export default {
-  name: "contact",
-  props: ["text"]
-};
+  name: 'contact',
+  props: {
+    text: Object
+  }
+}
 </script>

@@ -27,38 +27,14 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
 export default {
-  name: "error-404",
-  data() {
+  name: 'error-404',
+  data () {
     return {
       lang: this.$store.getters.getLanguage
-    };
-  },
-  created() {
-    $(document).ready(function() {
-      $("a").on("click", function(event) {
-        if (this.hash !== "") {
-          event.preventDefault();
-
-          var hash = this.hash;
-
-          $("html, body").animate(
-            {
-              scrollTop: $(hash).offset().top
-            },
-            800,
-            function() {
-              window.location.hash = hash;
-            }
-          );
-        }
-      });
-
-      $(".errorRow").css("height", $(document).height() - 200);
-    });
+    }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -71,5 +47,9 @@ export default {
   border: 2px solid;
   padding: 15px;
   border-radius: 50px;
+}
+
+.container {
+  margin-top: 6rem;
 }
 </style>

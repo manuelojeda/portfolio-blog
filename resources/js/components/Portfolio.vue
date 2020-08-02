@@ -25,9 +25,11 @@
 
 <script>
 export default {
-  name: "portfolio",
-  props: ["text"],
-  data() {
+  name: 'portfolio',
+  props: {
+    text: Object
+  },
+  data () {
     return {
       portfolio_gallery: {
         type: Object
@@ -35,16 +37,16 @@ export default {
       selected_portfolio: {
         evidence: {}
       }
-    };
+    }
   },
-  created() {
-    this.portfolio_gallery = this.text.projects;
+  created () {
+    this.portfolio_gallery = this.text.projects
   },
   methods: {
-    showPortfolioDescription(item) {
-      this.selected_portfolio = item;
-      this.$bvModal.show("modalPortfolioItem");
+    showPortfolioDescription (item) {
+      this.selected_portfolio = item
+      this.$bvModal.show('modalPortfolioItem')
     }
   }
-};
+}
 </script>

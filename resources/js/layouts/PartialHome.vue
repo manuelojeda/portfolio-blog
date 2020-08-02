@@ -8,23 +8,21 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-
 export default {
-  name: "partial-home",
+  name: 'partialHome',
   computed: {
-    home() {
-      return this.$store.getters.getJson.home;
+    home () {
+      return this.$store.getters.getJson.home
     },
-    about() {
-      return this.$store.getters.getJson.about;
+    about () {
+      return this.$store.getters.getJson.about
     },
-    portfolio() {
-      return this.$store.getters.getJson.portfolio;
+    portfolio () {
+      return this.$store.getters.getJson.portfolio
     },
-    contact() {
-      return this.$store.getters.getJson.contact;
+    contact () {
+      return this.$store.getters.getJson.contact
     }
   }
-};
+}
 </script>

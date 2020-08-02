@@ -6,5 +6,5 @@
 @section('pageUrl', url('/Blog/'.$blog->seo))
 
 @section('content')
-    <blog blog-prop="{{$blog}}"></blog>
+    <blog :blog="{{$blog}}"></blog>
 @endsection

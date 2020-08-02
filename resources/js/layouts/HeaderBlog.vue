@@ -6,8 +6,6 @@
 </template>
 
 <script>
-// eslint-disable-next-line no-unused-vars
-import { mapGetters, mapMutations } from 'vuex'
 import MobileHeader from './MobileHeader'
 import DesktopHeader from './DesktopHeader'
 

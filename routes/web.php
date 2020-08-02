@@ -1,5 +1,5 @@
 <?php
-
+// phpcs:disable
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get(
+    '/',
+    function () {
+        return view('welcome');
+    }
+);
 
 Route::get('/badges', 'BadgesController@index');
 Route::get('/badges/{id}', 'BadgesController@show');
@@ -35,6 +38,8 @@ Auth::routes();
 Route::get('/admin', 'Admin\DashboardController@index')->name('admin');
 // Route::get('/admin/home', 'Admin\DashboardController@index')->name('admin.home');
 
+Route::get('/admin/personal', 'Admin\PersonalController@index');
+
 Route::post('/admin/blogs/setStatus', 'Admin\BlogController@setStatus');
 Route::resource('/admin/blogs', 'Admin\BlogController');
 
@@ -48,6 +53,13 @@ Route::put('/admin/{id}', 'AdminController@update')->name('admin');
 Route::delete('/admin/{id}', 'AdminController@delete')->name('admin');
 Route::get('/admin/{id}/edit', 'AdminController@edit')->name('admin');
 
-Route::get('/{vue_capture?}', function(){
-    return view('welcome');
-})->where('vue_capture','[\/\w\.-]*');
+Route::get(
+    '/{vue_capture?}',
+    function () {
+        return view('welcome');
+    }
+)
+    ->where(
+        'vue_capture',
+        '[\/\w\.-]*'
+    );

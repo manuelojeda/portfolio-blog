@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Personal;
 use Illuminate\Http\Request;
-use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\View\View;
 
-class DashboardController extends Controller
+class PersonalController extends Controller
 {
     public function __construct()
     {
@@ -19,13 +19,13 @@ class DashboardController extends Controller
     /**
      * Function that connects and sends the personal information data
      * 
-     * @return View
+     * @return Personal
      */
     public function index(): View
     {
         $personal = Personal::first();
-
-        return view('admin.dashboard')
-        ->with('personal', $personal);
+        
+        return view('admin.personal.index')
+            ->with('personal', $personal);
     }
 }

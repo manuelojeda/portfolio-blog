@@ -48,13 +48,7 @@
 <script>
 export default {
   name: 'about',
-  props: ['text'],
-  methods: {
-    setActive (clase) {
-      $('.nav-link').removeClass('active')
-      $('.nav-link.' + clase).addClass('active')
-    }
-  }
+  props: ['text']
 }
 </script>
 
