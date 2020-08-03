@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import AdminBlogForm from '@/components/admin/Blog/Form.vue'
+import AdminBlogForm from '@/Admin/components/Blog/Form.vue'
 
 export default {
   name: 'AdminBlogEdit',

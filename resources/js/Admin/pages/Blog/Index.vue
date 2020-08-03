@@ -33,7 +33,7 @@
 import axios from 'axios'
 import { askAlert, simpleAlert } from '@/utils/alerts'
 
-import BlogsTable from '@/components/admin/Blog/Table.vue'
+import BlogsTable from '@/Admin/components/Blog/Table.vue'
 
 export default {
   name: 'AdminDashboard',

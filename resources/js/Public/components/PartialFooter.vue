@@ -34,9 +34,11 @@ export default {
   width: 100%;
   bottom: 0;
   font-family: 'Barlow', sans-serif;
+  display: none;
 
   @media (min-width: 768px) {
     position: fixed;
+    display: block;
   }
 }
 .grid {
