@@ -97,7 +97,7 @@ export default {
 <style lang="scss" scoped>
 .container {
   @media (min-width: 768px) {
-    margin-bottom: 5rem;
+    margin-bottom: 7rem !important;
   }
 }
 .grid {
