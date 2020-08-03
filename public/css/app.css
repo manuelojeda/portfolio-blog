@@ -38074,3 +38074,7 @@ body .fixed-top {
   top: -40px;
 }
 
+.FileInput--text-input-wrapper > .form-control {
+  height: 100% !important;
+}
+

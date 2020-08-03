@@ -1,22 +1,22 @@
 <template>
-  <div class="home row align-items-center" id="home" @focus="setActive('home')">
+  <div class="home row align-items-center" id="home">
     <div class="col-lg-6">
-      <img src="/img/profile_pic.jpg" alt="Profile Pic" class="profilePic">
+      <img :src="personal.photo" alt="Profile Pic" class="profilePic">
     </div>
     <div class="col-lg-6">
       <div class="hello">
-        <span>{{text.hello}}</span>
+        <span>Hi, I am</span>
       </div>
       <h1 class="mainTitle">
-        Manuel Ojeda
+        {{personal.name}}
         <br>
-        <span v-html="text.charge"></span>
+        <span v-html="personal.position"></span>
       </h1>
       <blockquote class="blockquote">
         <p class="mb-0 secondary">
-          <a href="mailto:manuelojedasistemas@gmail.com">
+          <a :href="`mailto:${personal.email}`">
             <i class="fas fa-envelope mr-2"></i>
-            manuelojedasistemas@gmail.com
+            {{personal.email}}
           </a>
         </p>
       </blockquote>
@@ -27,12 +27,8 @@
 <script>
 export default {
   name: 'home',
-  props: ['text'],
-  methods: {
-    setActive (clase) {
-      $('.nav-link').removeClass('active')
-      $('.nav-link.' + clase).addClass('active')
-    }
+  props: {
+    personal: Object
   }
 }
 </script>

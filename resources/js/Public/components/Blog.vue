@@ -58,16 +58,22 @@
         </div>
       </div>
     </div>
+
+    <PartialFooter />
   </div>
 </template>
 
 <script>
+import PartialFooter from '@/Public/components/PartialFooter.vue'
 import MarkdownIt from 'markdown-it'
 
 export default {
   name: 'Blog',
   props: {
     blog: Object
+  },
+  components: {
+    PartialFooter
   },
   data () {
     return {
@@ -82,3 +88,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.container {
+  @media(min-width: 768px) {
+    margin-bottom: 5rem !important;
+  }
+}
+</style>

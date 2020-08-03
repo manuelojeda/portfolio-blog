@@ -45,17 +45,21 @@
         </div>
       </div>
     </div>
+
+    <PartialFooter />
   </div>
 </template>
 
 <script>
 import BlogCard from './Card'
+import PartialFooter from '@/Public/components/PartialFooter.vue'
 import axios from 'axios'
 
 export default {
   name: 'BlogIndex',
   components: {
-    BlogCard
+    BlogCard,
+    PartialFooter
   },
   data () {
     return {

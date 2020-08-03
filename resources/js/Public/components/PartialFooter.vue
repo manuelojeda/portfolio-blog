@@ -1,0 +1,71 @@
+<template>
+  <footer class="footer mt-auto">
+    <b-container>
+      <div class="grid">
+        <div class="copyright">
+          Made by <b>Manuel Ojeda</b> to the 🌐 - © 2020
+        </div>
+        <div class="social-media">
+          <a href="https://dev.to/manuelojeda" class="mx-1" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-dev"></i>
+          </a>
+          <a href="https://twitter.com/darkjeda" class="mx-1" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/manuel-alejandro-ojeda-ag%C3%BAndez-618753132/" class="mx-1" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
+    </b-container>
+  </footer>
+</template>
+
+<script>
+export default {
+  name: 'PartialFooter'
+}
+</script>
+
+<style lang="scss" scoped>
+.footer {
+  border-top: 2px solid #00c9b6;
+  background-color: #f7f7f7;
+  width: 100%;
+  bottom: 0;
+  font-family: 'Barlow', sans-serif;
+
+  @media (min-width: 768px) {
+    position: fixed;
+  }
+}
+.grid {
+  display: grid;
+  padding: 1rem;
+  grid-template-columns: 1fr;
+  text-align: center;
+  align-items: center;
+
+  .social-media {
+    display: none;
+
+    a {
+      color: #015C83;
+    }
+  }
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+
+    .copyright {
+      text-align: left;
+    }
+
+    .social-media {
+      display: block;
+      text-align: right;
+      font-size: 1.5rem;
+    }
+  }
+}
+</style>

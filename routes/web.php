@@ -14,12 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get(
-    '/',
-    function () {
-        return view('welcome');
-    }
-);
+Route::get('/', 'DashboardController@index');
 
 Route::get('/badges', 'BadgesController@index');
 Route::get('/badges/{id}', 'BadgesController@show');
@@ -38,7 +33,7 @@ Auth::routes();
 Route::get('/admin', 'Admin\DashboardController@index')->name('admin');
 // Route::get('/admin/home', 'Admin\DashboardController@index')->name('admin.home');
 
-Route::get('/admin/personal', 'Admin\PersonalController@index');
+Route::post('/admin/personal/{personal}', 'Admin\PersonalController@update');
 
 Route::post('/admin/blogs/setStatus', 'Admin\BlogController@setStatus');
 Route::resource('/admin/blogs', 'Admin\BlogController');

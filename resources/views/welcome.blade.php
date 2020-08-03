@@ -6,5 +6,7 @@
 @section('pageUrl', url('/'))
 
 @section('content')
-    <app></app>
+    <app
+        :personal="{{ $personal }}"
+    ></app>
 @endsection
