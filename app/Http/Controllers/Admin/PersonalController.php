@@ -33,7 +33,7 @@ class PersonalController extends Controller
      *
      * @return JsonResponse
      */
-    public function update(Personal $personal, UpdatePersonalRequest $request): JsonResponse
+    public function update(Personal $personal, Request $request): JsonResponse
     {
         $data = isset($request->file)
             ? (array)json_decode($request->personal)
