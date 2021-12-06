@@ -24,6 +24,6 @@ class DashboardController extends Controller
         $personal = Personal::first();
 
         return view('admin.dashboard')
-        ->with('personal', $personal);
+            ->with('personal', $personal);
     }
 }

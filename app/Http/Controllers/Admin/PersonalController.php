@@ -6,7 +6,6 @@ use App\Personal;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdatePersonalRequest;
-use App\Services\Admin\PersonalService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Storage;
@@ -36,7 +35,33 @@ class PersonalController extends Controller
      */
     public function update(Personal $personal, UpdatePersonalRequest $request): JsonResponse
     {
-        $service = new PersonalService();
-        return $service->updatePersonalInfo($personal, $request);
+        $data = isset($request->file)
+            ? (array)json_decode($request->personal)
+            : $request->personal;
+
+        if (isset($request->file)) {
+            $request->file->move('img', 'profile_pic.jpg');
+            $json_data = collect($data['data']);
+            $json_data['photo'] = '/img/profile_pic.jpg';
+            $data['data'] = $json_data;
+        }
+
+        if ($personal->update($data)) {
+            return response()->json(
+                [
+                    'band' => true,
+                    'text' => 'Information saved',
+                    'icon' => 'success'
+                ],
+                200
+            );
+        } else {
+            return response()->json(
+                [
+                    'band' => false,
+                ],
+                500
+            );
+        }
     }
 }
