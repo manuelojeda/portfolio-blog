@@ -1,6 +1,6 @@
 const mix = require('laravel-mix')
+const path = require('path')
 require('laravel-mix-polyfill')
-require('laravel-mix-alias')
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -19,8 +19,11 @@ mix.js('resources/js/Public/app.js', 'public/js')
     terser: {}
   })
   .alias({
-    '@': '/resources/js'
+    '@': path.join(__dirname, 'resources/js')
   })
   .extract()
   .version()
+  .vue({
+    version: 2
+  })
   .disableNotifications()
