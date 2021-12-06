@@ -1,5 +1,5 @@
 <?php
-// phpcs:disable
+
 namespace App\Http\Controllers;
 
 use App\Personal;
