@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use Carbon\Carbon;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class BlogController extends Controller
 {
@@ -14,21 +17,21 @@ class BlogController extends Controller
         $this->middleware('auth');
     }
 
-    public function index ()
+    public function index(): View
     {
-        // dd(1);
         $blogs = Blog::all();
-        
+
         return view('admin.blogs.index')
             ->with('blogs', $blogs);
     }
 
-    public function create ()
+    public function create(): View
     {
         return view('admin.blogs.create');
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $data = $request->validate([
             'title' => 'string|required',
             'thumbnail' => 'string|required',
@@ -38,14 +41,13 @@ class BlogController extends Controller
         $blog = new Blog($data);
         $blog->publish = false;
 
-        if($blog->save()) {
+        if ($blog->save()) {
             $response = collect([
                 'band' => true,
                 'text' => 'Entry saved',
                 'icon' => 'success'
             ]);
-        }
-        else{
+        } else {
             $response = collect([
                 'band' => false,
                 'text' => 'There was a problem saving the entry',
@@ -55,14 +57,14 @@ class BlogController extends Controller
 
         return $response;
     }
-    
-    public function edit (Blog $blog)
+
+    public function edit(Blog $blog): View
     {
         return view('admin.blogs.edit')
             ->with('blog', $blog);
     }
 
-    public function update (Blog $blog, Request $request)
+    public function update(Blog $blog, Request $request): JsonResponse
     {
         $data = $request->validate([
             'title' => 'string|required',
@@ -85,7 +87,8 @@ class BlogController extends Controller
         }
     }
 
-    public function destroy (Blog $blog) {
+    public function destroy(Blog $blog): Collection
+    {
         if ($blog->delete()) {
             $response = collect([
                 'band' => true,
@@ -103,7 +106,8 @@ class BlogController extends Controller
         return $response;
     }
 
-    public function setStatus(Request $request) {
+    public function setStatus(Request $request)
+    {
         $data = $request->validate([
             'id' => 'integer|required',
             'status' => 'boolean|required',
@@ -111,14 +115,14 @@ class BlogController extends Controller
 
         $blog = Blog::findOrFail($request->id);
         $blog->publish = $request->status;
-        $blog->published_at = $request->status ? Carbon::parse()->now() : null;
-        
-        if($blog->save()) {
+        $blog->published_at = $request->status
+            ? Carbon::parse()->now()
+            : null;
+
+        if ($blog->save()) {
+            $msg = 'Entry unpublished';
             if ($request->status) {
                 $msg = 'Entry published';
-            }
-            else{
-                $msg = 'Entry unpublished';
             }
 
             $response = collect([
@@ -126,8 +130,7 @@ class BlogController extends Controller
                 'text' => $msg,
                 'icon' => 'success'
             ]);
-        }
-        else{
+        } else {
             $response = collect([
                 'band' => false,
                 'text' => 'There was a problem saving the entry',

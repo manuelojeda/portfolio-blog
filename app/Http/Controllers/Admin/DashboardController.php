@@ -1,5 +1,5 @@
 <?php
-// phpcs:disable
+
 namespace App\Http\Controllers\Admin;
 
 use App\Personal;
@@ -14,11 +14,9 @@ class DashboardController extends Controller
         $this->middleware('auth');
     }
 
-    // phpcs:enable
-
     /**
      * Function that connects and sends the personal information data
-     * 
+     *
      * @return View
      */
     public function index(): View
