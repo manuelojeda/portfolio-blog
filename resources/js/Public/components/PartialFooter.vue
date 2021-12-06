@@ -3,7 +3,7 @@
     <b-container>
       <div class="grid">
         <div class="copyright">
-          Made by <b>Manuel Ojeda</b> to the 🌐 - © 2020
+          Made by <b>Manuel Ojeda</b> to the 🌐 - © {{ currentYear }}
         </div>
         <div class="social-media">
           <a href="https://dev.to/manuelojeda" class="mx-1" target="_blank" rel="noopener noreferrer">
@@ -23,7 +23,10 @@
 
 <script>
 export default {
-  name: 'PartialFooter'
+  name: 'PartialFooter',
+  props: {
+    currentYear: Number
+  }
 }
 </script>
 

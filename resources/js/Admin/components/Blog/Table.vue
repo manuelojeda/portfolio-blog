@@ -1,6 +1,5 @@
 <template>
-  <div>
-
+  <section>
     <div class="block">
       <div class="row">
         <div class="col-12 col-md-6 mb-3">
@@ -44,10 +43,10 @@
     >
       <template v-slot:cell(status)="blog">
         <span v-if="blog.item.publish === 1">
-          Activo
+          Active
         </span>
         <span v-else>
-          Inativo
+          Inactive
         </span>
       </template>
       <template v-slot:cell(opciones)="blog">
@@ -87,11 +86,10 @@
         aria-controls="blog-table"
       ></b-pagination>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
-// @ts-check
 export default {
   name: 'AdminBlogTable',
   props: {

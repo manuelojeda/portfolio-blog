@@ -6,5 +6,7 @@
 @section('pageUrl', url('/Blog'))
 
 @section('content')
-    <blogs></blogs>
+    <blogs
+        :current-year="{{ $currentYear }}"
+    ></blogs>
 @endsection

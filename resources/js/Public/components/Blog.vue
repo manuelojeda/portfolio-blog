@@ -59,7 +59,7 @@
       </div>
     </div>
 
-    <PartialFooter />
+    <PartialFooter :currentYear="currentYear" />
   </div>
 </template>
 
@@ -70,7 +70,8 @@ import MarkdownIt from 'markdown-it'
 export default {
   name: 'Blog',
   props: {
-    blog: Object
+    blog: Object,
+    currentYear: Number
   },
   components: {
     PartialFooter

@@ -1,14 +1,14 @@
 module.exports = {
   env: {
     browser: true,
-    es2020: true
+    es2021: true
   },
   extends: [
     'plugin:vue/essential',
     'standard'
   ],
   parserOptions: {
-    ecmaVersion: 11,
+    ecmaVersion: 13,
     parser: '@typescript-eslint/parser',
     sourceType: 'module'
   },

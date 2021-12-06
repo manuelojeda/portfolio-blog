@@ -69,7 +69,6 @@
 </template>
 
 <script>
-// @ts-check
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import MarkdownIt from 'markdown-it'

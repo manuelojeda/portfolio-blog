@@ -15,17 +15,17 @@ class Blog extends Model
 
     protected $fillable = ['title', 'thumbnail', 'content'];
 
-    public function getCreatedAtAttribute ($value)
+    public function getCreatedAtAttribute($value)
     {
         return Carbon::parse($value)->format('d-m-Y H:i');
     }
 
-    public function getPublishedAtAttribute ($value)
+    public function getPublishedAtAttribute($value)
     {
         return Carbon::parse($value)->format('d-m-Y H:i');
     }
 
-    public function getSlugOptions() : SlugOptions
+    public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
             ->generateSlugsFrom('title')

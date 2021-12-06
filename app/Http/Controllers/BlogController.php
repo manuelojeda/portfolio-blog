@@ -2,44 +2,46 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Jenssegers\Date\Date;
+use App\Enums\BlogStatus;
 use App\Models\Blog;
-
+use App\Services\GetCurrentYear;
+use Illuminate\Http\JsonResponse;
+use Illuminate\View\View;
 
 class BlogController extends Controller
 {
-    public function index() {
-        // $blogs = Blog::select(['title','seo','thumbnail','content','updated_at'])
-        //     ->where('publish','=','1')
-        //     ->orderBy('created_at','desc')
-        //     ->get();
-        
-        // foreach ($blogs as $blog) {
-        //     $created_at = Date::parse($blog->updated_at)->timezone('America/Chihuahua');
-        //     $blog->formattedFecha = $created_at->format('d-M-Y H:i');
-        // }
-
-        return view('blogs');
+    public function __construct(
+        private GetCurrentYear $getCurrentYear
+    ) {
+        $this->getCurrentYear = new GetCurrentYear();
     }
 
-    public function show($seo) {
+    public function index(): View
+    {
+        return view('blogs')
+            ->with('currentYear', $this->getCurrentYear->__invoke());
+    }
+
+    public function show($seo): View
+    {
         $blog = Blog::select(['title','seo','thumbnail','content','published_at'])
-            ->where('seo','=',$seo)->where('publish','=','1')
+            ->where('seo', $seo)
+            ->where('publish', BlogStatus::ACTIVE)
             ->first();
-        
-        if($blog === null) {
+
+        if (!$blog) {
             abort('404');
         }
-        
-        return view('blog', compact('blog'));
+
+        return view('blog', compact('blog'))
+            ->with('currentYear', $this->getCurrentYear->__invoke());
     }
 
-    public function paginate ()
+    public function paginate(): JsonResponse
     {
         $blogs = Blog::select(['title','seo','thumbnail','content','updated_at', 'published_at'])
-            ->where('publish','=','1')
-            ->orderBy('created_at','desc')
+            ->where('publish', BlogStatus::ACTIVE)
+            ->orderBy('created_at', 'desc')
             ->paginate(8);
 
         return response()->json($blogs, 200);

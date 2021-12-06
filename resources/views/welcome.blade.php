@@ -8,5 +8,6 @@
 @section('content')
     <app
         :personal="{{ $personal }}"
+        :current-year="{{ $currentYear }}"
     ></app>
 @endsection

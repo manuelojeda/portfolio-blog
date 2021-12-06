@@ -5,7 +5,7 @@
       :personal="personal"
       class="mb-5"
     ></partial-home>
-    <PartialFooter />
+    <PartialFooter :current-year="currentYear" />
   </div>
 </template>
 
@@ -15,7 +15,8 @@ import PartialFooter from '@/Public/components/PartialFooter.vue'
 export default {
   name: 'app',
   props: {
-    personal: Object
+    personal: Object,
+    currentYear: Number
   },
   components: {
     PartialFooter

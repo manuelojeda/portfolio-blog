@@ -6,5 +6,8 @@
 @section('pageUrl', url('/Blog/'.$blog->seo))
 
 @section('content')
-    <blog :blog="{{$blog}}"></blog>
+    <blog 
+        :blog="{{$blog}}"
+        :current-year="{{ $currentYear }}"
+    ></blog>
 @endsection

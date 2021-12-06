@@ -46,7 +46,7 @@
       </div>
     </div>
 
-    <PartialFooter />
+    <PartialFooter :current-year="currentYear" />
   </div>
 </template>
 
@@ -60,6 +60,9 @@ export default {
   components: {
     BlogCard,
     PartialFooter
+  },
+  props: {
+    currentYear: Number
   },
   data () {
     return {
