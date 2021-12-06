@@ -21,9 +21,7 @@ class DashboardController extends Controller
      */
     public function index(): View
     {
-        $personal = Personal::first();
-
         return view('admin.dashboard')
-            ->with('personal', $personal);
+            ->with('personal', Personal::first());
     }
 }
