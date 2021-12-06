@@ -11,14 +11,17 @@ class BadgesController extends Controller
         $badges = Badge::all();
         return $badges;
     }
+
     public function show($id) {
         $badges = Badge::findOrFail($id);
         return $badges;
     }
+    
     public function destroy($id) {
         $badges = Badge::findOrFail($id);
         $badges->delete();
     }
+
     public function store(Request $request) {
         $data = $request->validate([
             'firstName' => 'string|required',

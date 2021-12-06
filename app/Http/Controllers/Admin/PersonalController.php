@@ -33,10 +33,10 @@ class PersonalController extends Controller
 
     /**
      * Function to update the personal data
-     * 
+     *
      * @param Personal $personal - Personal data
      * @param Request  $request  - The data
-     * 
+     *
      * @return JsonResponse
      */
     public function update(Personal $personal, Request $request): JsonResponse
