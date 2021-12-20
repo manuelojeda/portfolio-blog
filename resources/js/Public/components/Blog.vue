@@ -53,7 +53,7 @@
           <div class="my-4 blog-body" v-html="content"></div>
 
           <div class='comments'>
-            <Disqus />
+            <!-- <Disqus /> -->
           </div>
         </div>
       </div>

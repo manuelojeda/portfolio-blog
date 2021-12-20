@@ -15,6 +15,7 @@ require('laravel-mix-polyfill')
 mix.js('resources/js/Public/app.js', 'public/js')
   .ts('resources/js/Admin/admin.ts', 'public/js')
   .sass('resources/sass/app.scss', 'public/css')
+  .sass('resources/sass/dark.scss', 'public/css')
   .options({
     terser: {}
   })

@@ -12,7 +12,7 @@
 @import './blog.scss';
 
 body {
-
+    transition: all ease .25s;
     h1 {
         // font-size: 48.83px !important;
         font-family: 'Barlow', sans-serif;
@@ -115,6 +115,16 @@ body {
     .fixed-top {
         position: sticky;
         top: -40px;
+    }
+
+    .breadcrumb {
+        font-weight: 600;
+    }
+
+    .dark-mode-switch {
+        a {
+            color: rgba(0, 0, 0, 0.5) !important;
+        }
     }
 }
 
