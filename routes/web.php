@@ -48,6 +48,7 @@ Route::get('/home', function () {
 Route::post('/admin/personal/{personal}', [PersonalController::class, 'update']);
 
 Route::post('/admin/blogs/setStatus', [AdminBlogController::class, 'setStatus']);
+Route::get('/admin/blogs/paginate', [AdminBlogController::class, 'paginate']);
 Route::resource('/admin/blogs', AdminBlogController::class);
 
 Route::controller(AuthController::class)->group(function () {

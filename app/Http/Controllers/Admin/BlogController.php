@@ -9,6 +9,7 @@ use App\Services\Admin\BlogService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Collection;
+use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
@@ -19,8 +20,7 @@ class BlogController extends Controller
 
     public function index(): View
     {
-        return view('admin.blogs.index')
-            ->with('blogs', $this->blogService->getAllBlogs());
+        return view('admin.blogs.index');            // ->with('blogs', $this->blogService->getAllBlogs());
     }
 
     public function create(): View
@@ -52,5 +52,21 @@ class BlogController extends Controller
     public function setStatus(SetStatusBlogRequest $request)
     {
         return $this->blogService->setStatus($request);
+    }
+
+    public function paginate(Request $request): JsonResponse
+    {
+        $blogs = Blog::select();
+
+        if ($request->q) {
+            $query = $request->q;
+            $blogs = $blogs->where('title', 'LIKE', "%{$query}%");
+        }
+
+        $blogs = $blogs
+            ->orderBy('created_at', 'desc')
+            ->paginate(5);
+
+        return response()->json($blogs, 200);
     }
 }

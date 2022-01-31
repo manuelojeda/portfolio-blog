@@ -1,7 +1,8 @@
 import { createApp } from 'vue'
-
-// import './plugins/Bootstrap'
-// import './imports'
+import initComponents from './imports'
 
 const adminApp = createApp({})
+
+initComponents(adminApp)
+
 adminApp.mount('#admin')

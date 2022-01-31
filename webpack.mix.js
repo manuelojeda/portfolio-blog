@@ -1,6 +1,6 @@
 const mix = require('laravel-mix')
 const path = require('path')
-require('laravel-mix-polyfill')
+// require('laravel-mix-polyfill')
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
