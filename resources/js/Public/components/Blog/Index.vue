@@ -4,8 +4,28 @@
 
     <div class="container my-5 pt-5" v-show="!isLoading">
       <div class="row">
-        <div class="col-12 mb-4">
-          <h1 class="titulo mb-5">Bienvenido a mi blog</h1>
+        <div class="col-12 mb-3">
+          <h1 class="titulo">Bienvenido a mi blog</h1>
+        </div>
+      </div>
+      <div class="col-12 mb-4">
+        <div class="input-group my-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text">Escribe el título que deseas filter</div>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            v-model="filter"
+            @input="$emit('update:filter', $event.target.value)"
+            @keyup.enter="handlePageChanged(1)"
+          >
+          <button
+            class="btn btn-primary"
+            @click="handlePageChanged(1)"
+          >
+            Buscar
+          </button>
         </div>
       </div>
       <div v-show="blogs.length > 0">
@@ -16,13 +36,6 @@
             :blog="blog"
           />
         </div>
-        <!-- <b-pagination
-          :current-page="result.current_page"
-          :total-rows="result.total"
-          :per-page="result.per_page"
-          @change="handlePageChanged"
-          align="center"
-        /> -->
         <nav>
           <ul class="pagination justify-content-center">
             <li class="page-item" :class="currentPage === 1 ? 'disabled' : null">
@@ -99,7 +112,14 @@ onMounted(async () => {
 async function handlePageChanged (page) {
   try {
     isLoading.value = true
-    const response = await axios.get(`/blog/paginate?page=${page}`)
+    const url = new URL(window.location.origin + '/blog/paginate')
+    url.searchParams.append('page', page)
+
+    if (filter.value) {
+      url.searchParams.append('q', filter.value)      
+    }
+
+    const response = await axios.get(url)
     blogs.value = await response.data.data
     result.value = await response.data
     isLoading.value = false

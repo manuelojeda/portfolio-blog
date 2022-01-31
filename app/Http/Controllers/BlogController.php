@@ -6,6 +6,7 @@ use App\Enums\BlogStatus;
 use App\Models\Blog;
 use App\Services\GetCurrentYear;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class BlogController extends Controller
@@ -37,10 +38,17 @@ class BlogController extends Controller
             ->with('currentYear', $this->getCurrentYear->__invoke());
     }
 
-    public function paginate(): JsonResponse
+    public function paginate(Request $request): JsonResponse
     {
         $blogs = Blog::select(['title','seo','thumbnail','content','updated_at', 'published_at'])
-            ->where('publish', BlogStatus::ACTIVE)
+            ->where('publish', BlogStatus::ACTIVE);
+
+        if ($request->q) {
+            $query = $request->q;
+            $blogs = $blogs->where('title', 'LIKE', "%{$query}%");
+        }
+
+        $blogs = $blogs
             ->orderBy('created_at', 'desc')
             ->paginate(4);
 
