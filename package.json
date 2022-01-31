@@ -15,7 +15,7 @@
         "bootstrap": "^4.6.1",
         "cross-env": "^5.2.1",
         "jquery": "^3.5.1",
-        "laravel-mix": "^6.0.39",
+        "laravel-mix": "^6.0.41",
         "laravel-mix-alias": "^1.0.2",
         "lodash": "^4.17.21",
         "popper.js": "^1.16.1",
@@ -29,7 +29,7 @@
     },
     "dependencies": {
         "css-loader": "^3.6.0",
-        "laravel-mix-polyfill": "^2.0.0",
+        "laravel-mix-polyfill": "^3.0.1",
         "markdown-it": "^11.0.0",
         "node-sass": "^6.0.0",
         "pinia": "^2.0.11",
@@ -38,6 +38,7 @@
         "sweetalert2": "^9.17.1",
         "vue-router": "^3.3.4",
         "vue-simple-file-input": "^1.1.0",
-        "vue-sweetalert2": "^2.1.5"
+        "vue-sweetalert2": "^2.1.5",
+        "vue3-simple-file-input": "^1.0.3"
     }
 }

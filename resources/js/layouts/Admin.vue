@@ -47,8 +47,6 @@ export default {
   },
   methods: {
     handleLogout () {
-      // event.preventDefault()
-      // document.getElementById('logout-form').submit()
       axios.post('/logout')
         .then(() => {
           window.location.href = '/login'

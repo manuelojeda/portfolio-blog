@@ -68,73 +68,69 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import MarkdownIt from 'markdown-it'
+import { onMounted, ref } from 'vue';
 
-export default {
-  props: {
-    blog: Object,
-    isEdit: {
-      type: Boolean,
-      default: () => { return false }
-    }
-  },
-  data () {
-    return {
-      bandPreview: false,
-      form: {
-        title: '',
-        thumbnail: '',
-        content: ''
-      },
-      preview: null
-    }
-  },
-  created () {
-    if (this.isEdit) {
-      this.form = this.blog
-    }
-  },
-  methods: {
-    previewContent () {
-      const md = new MarkdownIt()
-      this.preview = md.render(this.form.content)
-      this.bandPreview = !this.bandPreview
-    },
-    save () {
-      const html = '<p>Saving entry...</p>'
-      Swal.fire({
-        html,
-        icon: 'warning',
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-        showConfirmButton: false
-      })
-
-      const method = this.isEdit ? 'PUT' : 'POST'
-      const url = this.isEdit ? `/admin/blogs/${this.blog.id}` : '/admin/blogs'
-
-      axios({
-        url,
-        method,
-        data: this.form
-      }).then(response => {
-        Swal.fire({
-          icon: response.data.type,
-          text: response.data.message,
-          allowOutsideClick: false,
-          allowEscapeKey: false
-        }).then(() => {
-          if (response.data.band) {
-            window.location.href = '/admin/blogs'
-          }
-        })
-      })
-    }
+const props = defineProps({
+  blog: Object,
+  isEdit: {
+    type: Boolean,
+    default: () => { return false }
   }
+})
+
+const bandPreview = ref(false)
+const preview = ref(null)
+const form = ref({
+  title: '',
+  thumbnail: '',
+  content: '',
+})
+
+function previewContent () {
+  const md = new MarkdownIt()
+  preview.value = md.render(form.value.content)
+  bandPreview.value = !bandPreview.value
 }
+function save () {
+  const html = '<p>Saving entry...</p>'
+  Swal.fire({
+    html,
+    icon: 'warning',
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    showConfirmButton: false
+  })
+
+  const method = props.isEdit ? 'PUT' : 'POST'
+  const url = props.isEdit ? `/admin/blogs/${props.blog.id}` : '/admin/blogs'
+
+  axios({
+    url,
+    method,
+    data: form.value
+  }).then(response => {
+    Swal.fire({
+      icon: response.data.icon,
+      text: response.data.text,
+      allowOutsideClick: false,
+      allowEscapeKey: false
+    }).then(() => {
+      if (response.data.band) {
+        window.location.href = '/admin/blogs'
+      }
+    })
+  })
+}
+
+onMounted(() => {
+  if (props.isEdit) {
+    form.value = props.blog
+  }
+})
 </script>
 
 <style scoped>

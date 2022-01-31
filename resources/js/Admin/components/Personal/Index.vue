@@ -48,43 +48,28 @@
   </div>
 </template>
 
-<script>
-// import { defineComponent, ref, computed } from '@vue/composition-api'
-// eslint-disable-next-line no-unused-vars
+<script setup>
+import { ref, computed } from 'vue'
 import PersonalService from '@/Admin/services/PersonalService'
-import FileInput from 'vue-simple-file-input'
+import FileInput from 'vue3-simple-file-input'
 
-export default ({
-  name: 'PersonalIndex',
-  props: {
-    personal: {
-      type: Object
-    }
-  },
-  components: {
-    FileInput
-  },
-  setup (props) {
-    const file = ref(null)
-    const service = new PersonalService(props.personal)
-    const personalData = service.getPersonal()
-
-    const previewPhoto = computed(() => {
-      return file.value === null ? personalData.value.data.photo : file.value.fileBlob
-    })
-
-    const handleForm = async () => {
-      service.save(file.value)
-    }
-
-    return {
-      file,
-      personalData,
-      previewPhoto,
-      handleForm
-    }
-  }
+const props = defineProps({
+  personal: Object
 })
+
+const file = ref(null)
+const service = new PersonalService(props.personal)
+const personalData = service.getPersonal()
+
+const previewPhoto = computed(() => {
+  return file.value === null
+    ? personalData.value.data.photo
+    : file.value.fileBlob
+})
+
+const handleForm = async () => {
+  service.save(file.value)
+}
 </script>
 
 <style lang="scss" scoped>

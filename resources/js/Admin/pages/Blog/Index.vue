@@ -3,96 +3,130 @@
     <admin-layout
       :app-name="appName"
     >
-      <b-container fluid>
-        <b-row>
-          <b-col cols="12">
+      <section class="container-fluid">
+        <div class="row">
+          <div class="col-12">
             <h1 class="mt-2 mb-4">Blogs <small>Index</small></h1>
-          </b-col>
-          <b-col cols="12" class="mb-4">
+          </div>
+          <div class="col-12 mb-4">
             <div class="float-right">
               <a href="/admin/blogs/create" class="btn btn-primary">
                 Create new entry
               </a>
             </div>
-          </b-col>
-          <b-col cols="12">
+          </div>
+          <div class="col-12">
             <blogs-table
+              v-if="!isLoading"
+              :currentPage="currentPage"
+              :lastPage="lastPage"
               :blogs="blogs"
+              v-model:filter="filter"
               @emitHandleSetEntryStatus="handleSetEntryStatus"
               @emitHandleDestroyEntry="handleDestroyEntry"
+              @emitHandlePageChanged="handlePageChanged"
             />
-          </b-col>
-        </b-row>
-      </b-container>
+          </div>
+        </div>
+      </section>
     </admin-layout>
   </div>
 </template>
 
-<script>
-// @ts-check
+<script setup>
 import axios from 'axios'
 import { askAlert, simpleAlert } from '@/utils/alerts'
-
 import BlogsTable from '@/Admin/components/Blog/Table.vue'
+import { onMounted, ref } from 'vue';
 
-export default {
-  name: 'AdminDashboard',
-  props: {
-    appName: String,
-    blogs: Array
-  },
-  components: {
-    BlogsTable
-  },
-  methods: {
-    async handleSetEntryStatus (entry) {
-      const MSG = entry.publish === 1
-        ? 'Do you want to unpublish the entry?'
-        : 'Do you want to publish the entry?'
+const props = defineProps({
+  appName: String
+})
 
-      const result = await askAlert(MSG)
+const blogs = ref([])
+const filter = ref(null)
+const currentPage = ref(1)
+const lastPage = ref(null)
+const isLoading = ref(true)
 
-      if (result.isConfirmed) {
-        const status = entry.publish !== 1
-        this.changeEntryStatus(entry.id, status)
-      }
-    },
-    async changeEntryStatus (id, status) {
-      const response = await axios({
-        url: '/admin/blogs/setStatus',
-        method: 'POST',
-        data: {
-          id,
-          status
-        }
-      })
+async function handleSetEntryStatus (entry) {
+  const MSG = entry.publish === 1
+    ? 'Do you want to unpublish the entry?'
+    : 'Do you want to publish the entry?'
 
-      if (response.data.band) {
-        simpleAlert(
-          response.data.text,
-          response.data.icon,
-          true
-        )
-      }
-    },
-    async handleDestroyEntry (entry) {
-      const result = await askAlert('Do you want to destroy this entry?')
+  const result = await askAlert(MSG)
 
-      if (result.isConfirmed) {
-        const response = await axios({
-          url: `/admin/blogs/${entry.id}`,
-          method: 'DELETE'
-        })
+  if (result.isConfirmed) {
+    const status = entry.publish !== 1
+    changeEntryStatus(entry.id, status)
+  }
+}
+async function changeEntryStatus (id, status) {
+  const response = await axios({
+    url: '/admin/blogs/setStatus',
+    method: 'POST',
+    data: {
+      id,
+      status
+    }
+  })
 
-        if (response.data.band) {
-          simpleAlert(
-            response.data.text,
-            response.data.icon,
-            true
-          )
-        }
-      }
+  if (response.data.band) {
+    simpleAlert(
+      response.data.text,
+      response.data.icon,
+      true
+    )
+  }
+}
+async function handleDestroyEntry (entry) {
+  const result = await askAlert('Do you want to destroy this entry?')
+
+  if (result.isConfirmed) {
+    const response = await axios({
+      url: `/admin/blogs/${entry.id}`,
+      method: 'DELETE'
+    })
+
+    if (response.data.band) {
+      simpleAlert(
+        response.data.text,
+        response.data.icon,
+        true
+      )
     }
   }
 }
+
+function fetchBlogsEntries () {
+  // const url = `?page=${currentPage.value}`
+  const url = new URL(window.location.origin + '/admin/blogs/paginate')
+  url.searchParams.append('page', currentPage.value)
+
+  if (filter.value) {
+    url.searchParams.append('q', filter.value)
+  }
+
+  isLoading.value = true
+  
+  axios({
+    url,
+    method: 'GET'
+  })
+    .then((response) => {
+      blogs.value = response.data.data
+      lastPage.value = response.data.last_page
+      isLoading.value = false
+    })
+}
+
+function handlePageChanged(page) {
+  currentPage.value = page
+  fetchBlogsEntries()
+}
+
+onMounted(() => {
+  fetchBlogsEntries()
+})
+
 </script>

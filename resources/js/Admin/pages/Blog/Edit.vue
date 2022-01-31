@@ -3,24 +3,18 @@
     <admin-layout
       :app-name="appName"
     >
-      <b-container fluid>
+      <section class="container-fluid">
         <admin-blog-form :blog="blog" is-edit />
-      </b-container>
+      </section>
     </admin-layout>
   </div>
 </template>
 
-<script>
+<script setup>
 import AdminBlogForm from '@/Admin/components/Blog/Form.vue'
 
-export default {
-  name: 'AdminBlogEdit',
-  props: {
-    appName: String,
-    blog: Object
-  },
-  components: {
-    AdminBlogForm
-  }
-}
+const props = defineProps({
+  appName: String,
+  blog: Object
+})
 </script>

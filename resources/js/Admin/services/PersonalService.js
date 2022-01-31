@@ -1,50 +1,49 @@
 /* eslint-disable no-unused-vars */
-import { ref, Ref } from '@vue/composition-api'
+import { ref } from 'vue'
 import { askAlert, simpleAlert } from '@/utils/alerts'
 import axios from 'axios'
-import Personal from '@/Admin/interfaces/Personal'
 
 class PersonalService {
-  private __Personal: Ref<Personal>
+  #__Personal;
 
-  constructor (personal: Personal = null) {
-    this.__Personal = ref<Personal>({
+  constructor (personal = null) {
+    this.#__Personal = ref({
       data: {
         email: ''
       }
     })
 
     if (personal) {
-      this.__Personal.value = personal
+      this.#__Personal.value = personal
     }
   }
 
-  getPersonal (): Ref<Personal> {
-    return this.__Personal
+  getPersonal () {
+    return this.#__Personal
   }
 
-  private prepareFormData (file): any {
+  #prepareFormData (file) {
     if (!file) {
       return {
-        personal: this.__Personal.value
+        personal: this.#__Personal.value
       }
     }
 
     const data = new FormData()
-    data.append('personal', JSON.stringify(this.__Personal.value))
+    data.append('personal', JSON.stringify(this.#__Personal.value))
     data.append('file', file.file)
 
     return data
   }
 
-  async save (file: any): Promise<any> {
+  async save (file) {
     const result = await askAlert('Do you want to save your personal data?')
 
     if (result.isConfirmed) {
-      const data = this.prepareFormData(file)
+      const data = this.#prepareFormData(file)
 
       const response = await axios({
-        url: `/admin/personal/${this.__Personal.value.id}`,
+        url: `/admin/personal/${this.#__Personal.value.id}`,
         method: 'post',
         data
       })
