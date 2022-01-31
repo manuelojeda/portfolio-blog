@@ -20,7 +20,7 @@ class BlogController extends Controller
 
     public function index(): View
     {
-        return view('admin.blogs.index');            // ->with('blogs', $this->blogService->getAllBlogs());
+        return view('admin.blogs.index');
     }
 
     public function create(): View
@@ -30,7 +30,9 @@ class BlogController extends Controller
 
     public function store(BlogRequest $request)
     {
-        return $this->blogService->storeBlog($request->toArray());
+        return $this->blogService->storeBlog(
+            data: $request->toArray()
+        );
     }
 
     public function edit(Blog $blog): View
@@ -41,7 +43,10 @@ class BlogController extends Controller
 
     public function update(Blog $blog, UpdateBlogRequest $request): JsonResponse
     {
-        return $this->blogService->updateBlog($blog, $request->toArray());
+        return $this->blogService->updateBlog(
+            blog: $blog,
+            data: $request->toArray()
+        );
     }
 
     public function destroy(Blog $blog): Collection
@@ -51,7 +56,9 @@ class BlogController extends Controller
 
     public function setStatus(SetStatusBlogRequest $request)
     {
-        return $this->blogService->setStatus($request);
+        return $this->blogService->setStatus(
+            request: $request
+        );
     }
 
     public function paginate(Request $request): JsonResponse

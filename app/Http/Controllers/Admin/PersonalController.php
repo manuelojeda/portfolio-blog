@@ -37,6 +37,9 @@ class PersonalController extends Controller
     public function update(Personal $personal, UpdatePersonalRequest $request): JsonResponse
     {
         $service = new PersonalService();
-        return $service->updatePersonalInfo($personal, $request);
+        return $service->updatePersonalInfo(
+            personal: $personal,
+            request: $request
+        );
     }
 }
