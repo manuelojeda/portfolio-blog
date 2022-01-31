@@ -6,10 +6,10 @@
       <div class="row align-items-start">
         <div
           class="col-12 col-sm-6 col-lg-4 item"
-          v-for="(item, index) in portfolio_gallery"
+          v-for="(item, index) in portfolioGallery"
           v-bind:key="index"
         >
-          <figure @click="showPortfolioDescription(item)">
+          <figure @click="showPortfolioDescription(item)" data-toggle="modal" data-target="#modalPortfolioItem">
             <img :src="item.background_img" alt class="img-portfolio" />
             <section class="work__description">
               <p class="work__title">{{item.work_title}}</p>
@@ -19,34 +19,23 @@
         </div>
       </div>
     </div>
-    <portfolio-item :selected-portfolio="selected_portfolio" :button_label="text.visit"></portfolio-item>
+    <PortfolioItem :selected-portfolio="selectedPortfolio" :buttonLabel="text.visit"></PortfolioItem>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'portfolio',
-  props: {
-    text: Object
-  },
-  data () {
-    return {
-      portfolio_gallery: {
-        type: Object
-      },
-      selected_portfolio: {
-        evidence: {}
-      }
-    }
-  },
-  created () {
-    this.portfolio_gallery = this.text.projects
-  },
-  methods: {
-    showPortfolioDescription (item) {
-      this.selected_portfolio = item
-      this.$bvModal.show('modalPortfolioItem')
-    }
-  }
+<script setup>
+import { ref } from "vue"
+import PortfolioItem from "./Modals/PortfolioItem.vue"
+
+const props = defineProps({
+  text: Object
+})
+
+const portfolioGallery = ref(props.text.projects)
+const selectedPortfolio = ref({})
+
+function showPortfolioDescription(item) {
+  selectedPortfolio.value = item
 }
+
 </script>

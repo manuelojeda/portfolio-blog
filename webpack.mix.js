@@ -12,8 +12,9 @@ require('laravel-mix-polyfill')
  |
  */
 
-mix.js('resources/js/Public/app.js', 'public/js')
-  .ts('resources/js/Admin/admin.ts', 'public/js')
+mix
+  .js('resources/js/Public/app.js', 'public/js')
+  .js('resources/js/Admin/admin.js', 'public/js')
   .sass('resources/sass/app.scss', 'public/css')
   .sass('resources/sass/dark.scss', 'public/css')
   .options({
@@ -25,6 +26,6 @@ mix.js('resources/js/Public/app.js', 'public/js')
   .extract()
   .version()
   .vue({
-    version: 2
+    version: 3
   })
   .disableNotifications()

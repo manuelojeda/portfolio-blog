@@ -1,39 +1,16 @@
 <template>
   <div id="header">
-    <mobile-header :header="header" class="d-md-none" />
-    <desktop-header class="d-none d-md-block" :header="header" />
+    <desktop-header :header="header" />
   </div>
 </template>
 
-<script>
-import MobileHeader from './MobileHeader'
+<script setup>
 import DesktopHeader from './DesktopHeader'
+import { useGlobalStore } from '../stores/store'
+import { computed } from 'vue'
 
-export default {
-  name: 'partial-header',
-  components: {
-    MobileHeader,
-    DesktopHeader
-  },
-  data () {
-    return {
-      header: {},
-      lang: null
-    }
-  },
-  created () {
-    this.header = this.$store.getters.getJson.header
-    this.lang = this.$store.getters.getLanguage
-  },
-  methods: {
-    setLang (lang) {
-      this.$store.commit('updateLanguage', lang)
-
-      this.header = this.$store.getters.getJson.header
-      this.lang = this.$store.getters.getLanguage
-    }
-  }
-}
+const store = useGlobalStore()
+const header = computed(() => store.getJson.header)
 </script>
 
 <style lang="scss" scoped>

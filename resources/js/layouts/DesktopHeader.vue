@@ -10,52 +10,46 @@
           </h4>
         </div>
         <div class="menu-links">
-          <b-navbar>
-            <b-navbar-nav class="ml-auto">
-              <b-nav-item
-                v-for="(menu, index) in header" :key="index"
-                :href="`/#${menu.url}`"
-                class="weight-500"
-                :class="menu.id"
-              >
-                {{menu.label}}
-              </b-nav-item>
-              <b-nav-item
-                href="/Blog"
-                class="weight-500"
-              >
-                Blog
-              </b-nav-item>
-              <b-nav-item
-                href="/en/Manuel-Ojeda-CV.pdf"
-                target="_blank"
-                class="weight-500"
-              >
-                My CV
-              </b-nav-item>
-              <b-nav-item-dropdown text="Social Media">
-                <b-dropdown-item href="https://dev.to/manuelojeda" target="_blank">Dev.to</b-dropdown-item>
-                <b-dropdown-item href="https://twitter.com/darkjeda" target="_blank">Twitter</b-dropdown-item>
-                <b-dropdown-item href="https://www.linkedin.com/in/manuel-alejandro-ojeda-ag%C3%BAndez-618753132/" target="_blank">Linked In</b-dropdown-item>
-              </b-nav-item-dropdown>
-              <b-nav-item href="#">
-                <dark-mode />
-              </b-nav-item>
-            </b-navbar-nav>
-          </b-navbar>
+          <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto">
+                <li
+                  class="nav-item"
+                  v-for="(menu, index) in header"
+                  :key="index"
+                >
+                  <a
+                    class="nav-link"
+                    :href="`/#${menu.url}`"
+                  >
+                    {{ menu.label }}
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/Blog">Blog</a>
+                </li>
+                <li class="nav-item" style="height: 100%; margin-top: 7px;">
+                  <DarkMode />
+                </li>
+              </ul>
+            </div>
+          </nav>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'DesktopHeader',
-  props: {
-    header: Object
-  }
-}
+<script setup>
+import DarkMode from '@/Public/components/DarkMode.vue';
+
+const props = defineProps({
+  header: Object
+})
 </script>
 
 <style lang="scss" scoped>

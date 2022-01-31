@@ -1,6 +1,6 @@
 <template>
   <div class="blog-main">
-    <header-blog class="mb-3" />
+    <PartialHeader class="mb-3" />
 
     <div class="container my-5 pt-5" v-show="!isLoading">
       <div class="row">
@@ -10,19 +10,37 @@
       </div>
       <div v-show="blogs.length > 0">
         <div class="grid mb-5" >
-          <blog-card
+          <BlogCard
             v-for="(blog, index) in blogs"
             :key="index"
             :blog="blog"
           />
         </div>
-        <b-pagination
+        <!-- <b-pagination
           :current-page="result.current_page"
           :total-rows="result.total"
           :per-page="result.per_page"
           @change="handlePageChanged"
           align="center"
-        />
+        /> -->
+        <nav>
+          <ul class="pagination justify-content-center">
+            <li class="page-item" :class="currentPage === 1 ? 'disabled' : null">
+              <a class="page-link" href="#" @click="handlePageChanged(currentPage - 1)">Previous</a>
+            </li>
+            <li
+              class="page-item" 
+              v-for="(item, index) in result.last_page"
+              :index="index"
+              :class="checkIfActive(index + 1)"
+            >
+              <a class="page-link" href="#" @click="handlePageChanged(index + 1)">{{ index + 1 }}</a>
+            </li>
+            <li class="page-item" :class="currentPage === result.last_page ? 'disabled' : null">
+              <a class="page-link" href="#" @click="handlePageChanged(currentPage + 1)">Next</a>
+            </li>
+          </ul>
+        </nav>
       </div>
       <div v-if="blogs.length === 0">
         <h4 class="text-center my-5">
@@ -35,11 +53,11 @@
         <div class="col-12">
           <div class="spinner-grid">
             <div>
-              <b-spinner
+              <Spinner
                 label="Loading..."
                 style="width: 8rem; height: 8rem;"
                 variant="info"
-              ></b-spinner>
+              ></Spinner>
             </div>
           </div>
         </div>
@@ -50,50 +68,48 @@
   </div>
 </template>
 
-<script>
-import BlogCard from './Card'
+<script setup>
+import BlogCard from './Card.vue'
 import PartialFooter from '@/Public/components/PartialFooter.vue'
 import axios from 'axios'
+import PartialHeader from '@/layouts/PartialHeader.vue'
+import { onMounted, ref } from 'vue';
+import Spinner from '../Spinner.vue';
 
-export default {
-  name: 'BlogIndex',
-  components: {
-    BlogCard,
-    PartialFooter
-  },
-  props: {
-    currentYear: Number
-  },
-  data () {
-    return {
-      blogs: [],
-      filter: null,
-      isLoading: true,
-      result: {
-      }
-    }
-  },
-  async created () {
-    try {
-      const response = await axios.get('/blog/paginate')
-      this.blogs = await response.data.data
-      this.result = await response.data
-      this.isLoading = false
-    } catch (error) {
-    }
-  },
-  methods: {
-    async handlePageChanged (page) {
-      try {
-        this.isLoading = true
-        const response = await axios.get(`/blog/paginate?page=${page}`)
-        this.blogs = await response.data.data
-        this.result = await response.data
-        this.isLoading = false
-      } catch (error) {
-      }
-    }
+const props = defineProps({
+  currentYear: Number
+})
+
+const blogs = ref([])
+const filter = ref(null)
+const isLoading = ref(true)
+const result = ref({})
+const currentPage = ref(1)
+
+onMounted(async () => {
+  try {
+    const response = await axios.get('/blog/paginate')
+    blogs.value = await response.data.data
+    result.value = await response.data
+    isLoading.value = false
+  } catch (error) {
   }
+})
+
+async function handlePageChanged (page) {
+  try {
+    isLoading.value = true
+    const response = await axios.get(`/blog/paginate?page=${page}`)
+    blogs.value = await response.data.data
+    result.value = await response.data
+    isLoading.value = false
+    currentPage.value = page
+  } catch (error) {
+  }
+}
+
+function checkIfActive(currentPage) {
+  return currentPage === result.value.current_page ? 'active' : null
 }
 </script>
 

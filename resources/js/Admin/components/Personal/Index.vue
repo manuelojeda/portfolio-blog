@@ -48,18 +48,17 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, computed } from '@vue/composition-api'
+<script>
+// import { defineComponent, ref, computed } from '@vue/composition-api'
 // eslint-disable-next-line no-unused-vars
-import Personal from '@/Admin/interfaces/Personal'
 import PersonalService from '@/Admin/services/PersonalService'
 import FileInput from 'vue-simple-file-input'
 
-export default defineComponent({
+export default ({
   name: 'PersonalIndex',
   props: {
     personal: {
-      type: Object as () => Personal
+      type: Object
     }
   },
   components: {
@@ -70,7 +69,7 @@ export default defineComponent({
     const service = new PersonalService(props.personal)
     const personalData = service.getPersonal()
 
-    const previewPhoto = computed((): string => {
+    const previewPhoto = computed(() => {
       return file.value === null ? personalData.value.data.photo : file.value.fileBlob
     })
 

@@ -1,10 +1,11 @@
 <template>
   <div>
     <a :href="`/Blog/${blog.seo}`">
-      <b-card
-        :img-src="blog.thumbnail"
+      <div
+        class="card"
       >
-        <b-card-text>
+        <img :src="blog.thumbnail" :alt="blog.title" class="card img-top img-fluid">
+        <div class="card-body">
           <h4 class="font-weight-bold mb-4">
             {{blog.title}}
           </h4>
@@ -12,8 +13,8 @@
             <b>Fecha de publicación</b> <br />
             {{blog.published_at}}
           </p>
-        </b-card-text>
-      </b-card>
+        </div>
+      </div>
     </a>
   </div>
 </template>

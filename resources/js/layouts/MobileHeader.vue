@@ -1,6 +1,6 @@
 <template>
   <div class="container py-4 mobile-header">
-    <b-row>
+    <!-- <b-row>
       <b-col cols="12">
         <slider
           :width="300"
@@ -10,21 +10,21 @@
           :links="links">
         </slider>
       </b-col>
-    </b-row>
+    </b-row> -->
   </div>
 </template>
 
 <script>
-import Slider from '@jeremyhamm/vue-slider'
+// import Slider from '@jeremyhamm/vue-slider'
 
 export default {
   name: 'MobileHeader',
   props: {
     header: Object
   },
-  components: {
-    Slider
-  },
+  // components: {
+  //   Slider
+  // },
   computed: {
     links () {
       const headerLinks = Object.values(this.header)

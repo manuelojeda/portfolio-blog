@@ -42,7 +42,7 @@ class BlogController extends Controller
         $blogs = Blog::select(['title','seo','thumbnail','content','updated_at', 'published_at'])
             ->where('publish', BlogStatus::ACTIVE)
             ->orderBy('created_at', 'desc')
-            ->paginate(8);
+            ->paginate(4);
 
         return response()->json($blogs, 200);
     }

@@ -1,6 +1,6 @@
 <template>
   <footer class="footer mt-auto">
-    <b-container>
+    <section class="container">
       <div class="grid">
         <div class="copyright">
           Made by <b>Manuel Ojeda</b> to the 🌐 - © {{ currentYear }}
@@ -17,7 +17,7 @@
           </a>
         </div>
       </div>
-    </b-container>
+    </section>
   </footer>
 </template>
 

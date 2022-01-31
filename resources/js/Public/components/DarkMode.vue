@@ -9,23 +9,14 @@
   </div>
 </template>
 
-<script>
-import { defineComponent, ref } from '@vue/composition-api'
+<script setup>
+import { ref } from 'vue';
 import { handleDarkModeTheme } from '../Utils/enableDarkMode'
 
-export default defineComponent({
-  setup () {
-    const isDark = ref(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+const isDark = ref(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
 
-    const handleDarkMode = () => {
-      isDark.value = !isDark.value
-      handleDarkModeTheme(isDark.value)
-    }
-
-    return {
-      isDark,
-      handleDarkMode
-    }
-  }
-})
+const handleDarkMode = () => {
+  isDark.value = !isDark.value
+  handleDarkModeTheme(isDark.value)
+}
 </script>

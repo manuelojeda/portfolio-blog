@@ -1,25 +1,21 @@
 <template>
   <div>
-    <partial-header></partial-header>
-    <partial-home
+    <PartialHeader />
+    <PartialHome
       :personal="personal"
       class="mb-5"
-    ></partial-home>
+    ></PartialHome>
     <PartialFooter :current-year="currentYear" />
   </div>
 </template>
 
-<script>
+<script setup>
 import PartialFooter from '@/Public/components/PartialFooter.vue'
+import PartialHeader from '@/layouts/PartialHeader.vue'
+import PartialHome from '@/layouts/PartialHome.vue';
 
-export default {
-  name: 'app',
-  props: {
-    personal: Object,
-    currentYear: Number
-  },
-  components: {
-    PartialFooter
-  }
-}
+const props = defineProps({
+  personal: Object,
+  currentYear: Number
+})
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="blog-main">
-    <header-blog class="mb-3" />
+    <PartialHeader class="mb-3" />
 
     <div class="container my-5 pt-5">
       <div class="row">
@@ -51,10 +51,6 @@
           </div>
 
           <div class="my-4 blog-body" v-html="content"></div>
-
-          <div class='comments'>
-            <!-- <Disqus /> -->
-          </div>
         </div>
       </div>
     </div>
@@ -63,31 +59,25 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import PartialFooter from '@/Public/components/PartialFooter.vue'
 import MarkdownIt from 'markdown-it'
+import PartialHeader from '@/layouts/PartialHeader.vue'
+import { onMounted, ref } from 'vue';
 
-export default {
-  name: 'Blog',
-  props: {
-    blog: Object,
-    currentYear: Number
-  },
-  components: {
-    PartialFooter
-  },
-  data () {
-    return {
-      tweet: '',
-      content: null
-    }
-  },
-  created () {
-    const md = new MarkdownIt()
-    this.content = md.render(this.blog.content)
-    this.tweet = `text=${this.blog.title}&url=https://manuelojeda.xyz/Blog/${this.blog.seo}`
-  }
-}
+const props = defineProps({
+  blog: Object,
+  currentYear: Number
+})
+
+const tweet = ref('')
+const content = ref(null)
+
+onMounted(() => {
+  const md = new MarkdownIt()
+  content.value = md.render(props.blog.content)
+  tweet.value = `text=${props.blog.title}&url=https://manuelojeda.xyz/Blog/${props.blog.seo}`
+})
 </script>
 
 <style lang="scss" scoped>

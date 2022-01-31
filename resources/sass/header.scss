@@ -22,8 +22,8 @@
         }
 
         .social-links {
-            //@extend .ml-auto;
-            //@extend .mr-auto;
+            @extend .ml-auto;
+            @extend .mr-auto;
             margin-left: auto;
             margin-right: auto;
 
