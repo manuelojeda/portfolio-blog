@@ -57,10 +57,10 @@ Route::controller(AuthController::class)->group(function () {
 });
 
 Route::controller(AdminController::class)->group(function () {
-    Route::get('/admin/create', 'create')->name('admin');
-    Route::post('/admin/store', 'store')->name('admin');
-    Route::post('/admin/setState', 'setState')->name('admin');
-    Route::put('/admin/{id}', 'update')->name('admin');
-    Route::delete('/admin/{id}', 'delete')->name('admin');
-    Route::get('/admin/{id}/edit', 'edit')->name('admin');
+    Route::get('/admin/create', 'create')->name('adminCreate');
+    Route::post('/admin/store', 'store')->name('adminStore');
+    Route::post('/admin/setState', 'setState')->name('adminSetState');
+    Route::put('/admin/{id}', 'update')->name('adminUpdate');
+    Route::delete('/admin/{id}', 'delete')->name('adminDelete');
+    Route::get('/admin/{id}/edit', 'edit')->name('adminEdit');
 });
