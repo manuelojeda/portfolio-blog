@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
@@ -13,16 +14,26 @@ class Blog extends Model
 
     protected $table = "blog";
 
-    protected $fillable = ['title', 'thumbnail', 'content'];
+    protected $fillable = [
+        'title',
+        'thumbnail',
+        'content'
+    ];
 
-    public function getCreatedAtAttribute($value)
+    public function createdAt(): Attribute
     {
-        return Carbon::parse($value)->format('d-m-Y H:i');
+        return new Attribute(
+            get: fn ($value) => Carbon::parse($value)->format('d-m-Y H:i'),
+            set: fn ($value) => $value
+        );
     }
 
-    public function getPublishedAtAttribute($value)
+    public function publishedAt(): Attribute
     {
-        return Carbon::parse($value)->format('d-m-Y H:i');
+        return new Attribute(
+            get: fn ($value) => Carbon::parse($value)->format('d-m-Y H:i'),
+            set: fn ($value) => $value
+        );
     }
 
     public function getSlugOptions(): SlugOptions
