@@ -1,6 +1,6 @@
 <template>
   <div>
-    <partial-header></partial-header>
+    <PartialHeader />
     <div class="container">
       <div class="row errorRow align-items-center">
         <div class="col-12 text-center" v-if="lang === 'es'">
@@ -23,18 +23,19 @@
         </div>
       </div>
     </div>
+    <PartialFooter :currentYear="currentYear"/>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'error-404',
-  data () {
-    return {
-      lang: this.$store.getters.getLanguage
-    }
-  }
-}
+<script setup>
+import PartialHeader from '../../layouts/PartialHeader.vue'
+import PartialFooter from './PartialFooter.vue'
+
+const props = defineProps({
+  currentYear: String
+})
+
+const lang = navigator.language.includes('en') ? 'en' : 'es'
 </script>
 
 <style lang="scss" scoped>

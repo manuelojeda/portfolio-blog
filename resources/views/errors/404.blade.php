@@ -6,5 +6,7 @@
 @section('pageUrl', url('/'))
 
 @section('content')
-    <error-404></error-404>
+    <error-404
+        current-year="{{ \Carbon\Carbon::now()->format('Y') }}"
+    ></error-404>
 @endsection

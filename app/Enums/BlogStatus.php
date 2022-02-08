@@ -4,6 +4,6 @@ namespace App\Enums;
 
 class BlogStatus
 {
-    public const ACTIVE = '1';
-    public const INACTIVE = '0';
+    public const ACTIVE = 1;
+    public const INACTIVE = 0;
 }

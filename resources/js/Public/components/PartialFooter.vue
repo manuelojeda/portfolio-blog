@@ -3,7 +3,15 @@
     <section class="container">
       <div class="grid">
         <div class="copyright">
-          Made by <b>Manuel Ojeda</b> to the 🌐 - © {{ currentYear }}
+          <p class="mb-0">
+            Made by <b>Manuel Ojeda</b> to the 🌐 - © {{ currentYear }} -
+            <span>
+              Powered with:
+              <i class="fab fa-vuejs"></i>
+              and
+              <i class="fab fa-laravel"></i>
+            </span>
+          </p>
         </div>
         <div class="social-media">
           <a href="https://dev.to/manuelojeda" class="mx-1" target="_blank" rel="noopener noreferrer">
@@ -25,7 +33,7 @@
 export default {
   name: 'PartialFooter',
   props: {
-    currentYear: Number
+    currentYear: String
   }
 }
 </script>
@@ -60,7 +68,7 @@ export default {
   }
 
   @media (min-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 25%;
 
     .copyright {
       text-align: left;

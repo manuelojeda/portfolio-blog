@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{AdminController, BadgesController, BlogController, DashboardController };
+use App\Http\Controllers\{ AdminController, BadgesController, BlogController, DashboardController };
 use App\Http\Controllers\Admin\BlogController as AdminBlogController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\PersonalController;
