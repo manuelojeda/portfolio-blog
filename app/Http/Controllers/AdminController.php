@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\BlogStatus;
 use Illuminate\Http\Request;
 use App\Models\Blog;
 
@@ -16,13 +17,18 @@ class AdminController extends Controller
     public function index() {
         if(Auth()->check()) {
             $blogs = Blog::all();
-            return view('admin.index', compact('blogs'));
+
+            /** @var string */
+            $view = 'admin.index';
+            return view($view, compact('blogs'));
         }
     }
 
     public function create() {
         if(Auth()->check()) {
-            return view('admin.create');
+            /** @var string */
+            $view = 'admin.create';
+            return view($view);
         }
     }
 
@@ -35,7 +41,7 @@ class AdminController extends Controller
             ]);
 
             $blog = new Blog($data);
-            $blog->publish = false;
+            $blog->publish = BlogStatus::INACTIVE;
 
             if($blog->save()) {
                 $response = collect([
@@ -59,7 +65,9 @@ class AdminController extends Controller
     public function edit($id) {
         if(Auth()->check()) {
             $blog = Blog::findOrFail($id);
-            return view('admin.edit',compact('blog'));
+            /** @var string */
+            $view = 'admin.edit';
+            return view($view, compact('blog'));
         }
     }
     

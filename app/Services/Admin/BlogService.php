@@ -2,6 +2,7 @@
 
 namespace App\Services\Admin;
 
+use App\Enums\BlogStatus;
 use App\Http\Requests\SetStatusBlogRequest;
 use App\Models\Blog;
 use App\Models\TagBlog;
@@ -19,7 +20,7 @@ class BlogService
     public function storeBlog(array $data): Collection
     {
         $blog = new Blog($data);
-        $blog->publish = false;
+        $blog->publish = BlogStatus::INACTIVE;
 
         /** @var Collection $response */
         $response = null;

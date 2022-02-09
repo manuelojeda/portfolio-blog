@@ -35,21 +35,15 @@ class AuthController extends Controller
   /**
    * Return user if exists; create and return if doesn't
    *
-   * @param $githubUser
-   * @return User
+   * @param mixed $githubUser
+   * @return User|null
    */
   private function findOrCreateUser($githubUser)
   {
-      // dd($githubUser);
       if ($authUser = User::where('email', $githubUser->email)->first()) {
-          return $authUser;
+        return $authUser;
       }
 
-    //   return User::create([
-    //       'name' => $githubUser->name,
-    //       'email' => $githubUser->email,
-    //       'github_id' => $githubUser->id,
-    //       'avatar' => $githubUser->avatar
-    //   ]);
+      return null;
   }
 }

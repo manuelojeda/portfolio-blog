@@ -5,9 +5,9 @@ namespace App\Services;
 use App\Models\Tag;
 use App\Models\Blog;
 use App\Enums\BlogStatus;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Pagination\LengthAwarePaginator;
 
 class BlogService
 {
@@ -15,7 +15,7 @@ class BlogService
     {
         return Blog::with('tags')
             ->where('seo', $seo)
-            ->wherePublish(BlogStatus::ACTIVE->value)
+            ->wherePublish(BlogStatus::ACTIVE)
             ->first();
     }
 

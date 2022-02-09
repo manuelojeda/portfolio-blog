@@ -9,20 +9,22 @@ use App\Http\Requests\UpdatePersonalRequest;
 use App\Services\Admin\PersonalService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Storage;
 
 class PersonalController extends Controller
 {
     /**
      * Function that connects and sends the personal information data
      *
-     * @return Personal
+     * @return View
      */
     public function index(): View
     {
         $personal = Personal::first();
 
-        return view('admin.personal.index')
+        /** @var string */
+        $view = 'admin.personal.index';
+        
+        return view($view)
             ->with('personal', $personal);
     }
 
@@ -30,7 +32,7 @@ class PersonalController extends Controller
      * Function to update the personal data
      *
      * @param Personal $personal - Personal data
-     * @param Request  $request  - The data
+     * @param UpdatePersonalRequest  $request  - The data
      *
      * @return JsonResponse
      */
