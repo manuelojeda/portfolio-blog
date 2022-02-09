@@ -7,6 +7,7 @@
 
 @section('content')
     <blogs
+        :tags="{{ $tags }}"
         :current-year="{{ $currentYear }}"
     ></blogs>
 @endsection

@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use App\Models\Tag;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Blog extends Model
 {
@@ -33,6 +35,16 @@ class Blog extends Model
         return new Attribute(
             get: fn ($value) => Carbon::parse($value)->format('d-m-Y H:i'),
             set: fn ($value) => $value
+        );
+    }
+
+    public function tags(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            Tag::class,
+            'tag_blogs',
+            'blog_id',
+            'tag_id'
         );
     }
 

@@ -4,6 +4,7 @@ namespace App\Services\Admin;
 
 use App\Http\Requests\SetStatusBlogRequest;
 use App\Models\Blog;
+use App\Models\TagBlog;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Collection;
@@ -42,6 +43,11 @@ class BlogService
     public function updateBlog(Blog $blog, array $data): JsonResponse
     {
         if ($blog->update($data)) {
+            $this->setBlogTags(
+                tags: $data['tags'],
+                blog: $blog
+            );
+
             return response()->json([
                 'band' => true,
                 'text' => 'Entry saved',
@@ -103,5 +109,27 @@ class BlogService
         }
 
         return $response;
+    }
+
+    private function setBlogTags(array $tags, Blog $blog): void
+    {
+        $this->deleteTags($blog);
+        foreach ($tags as $tag) {
+            $tagBlog = new TagBlog();
+            $tagBlog->tag_id = $tag['id'];
+            $tagBlog->blog_id = $blog->id;
+
+            $tagBlog->save();
+        }
+    }
+
+    private function deleteTags(Blog $blog)
+    {
+        /** @var TagBlog[] */
+        $blogTags = TagBlog::where('blog_id', $blog->id)->get();
+
+        foreach ($blogTags as $blogTag) {
+            $blogTag->delete();
+        }
     }
 }

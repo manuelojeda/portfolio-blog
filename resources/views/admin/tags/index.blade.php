@@ -1,10 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-
-<admin-blog-edit
-  :blog="{{$blog}}"
+<admin-tags-index
   :tags="{{ $tags }}"
   app-name="{{config('app.name')}}"
-></admin-blog-edit> 
+></admin-tags-index>
 @endsection

@@ -23,3 +23,15 @@ export function simpleAlert (text, icon, withReload = false) {
       }
     })
 }
+
+export function waitingAlert(text, icon) {
+  Swal.fire({
+    icon,
+    text,
+    showConfirmButton: false
+  })
+}
+
+export function closeAlert() {
+  Swal.close()
+}

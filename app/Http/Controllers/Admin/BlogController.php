@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\{ BlogRequest , SetStatusBlogRequest, UpdateBlogRequest };
 use App\Models\Blog;
+use App\Models\Tag;
 use App\Services\Admin\BlogService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
@@ -25,7 +26,8 @@ class BlogController extends Controller
 
     public function create(): View
     {
-        return view('admin.blogs.create');
+        return view('admin.blogs.create')
+            ->with('tags', Tag::all());
     }
 
     public function store(BlogRequest $request)
@@ -35,9 +37,11 @@ class BlogController extends Controller
         );
     }
 
-    public function edit(Blog $blog): View
+    public function edit(int $blogId): View
     {
+        $blog = Blog::with('tags')->where('id', $blogId)->first();
         return view('admin.blogs.edit')
+            ->with('tags', Tag::all())
             ->with('blog', $blog);
     }
 

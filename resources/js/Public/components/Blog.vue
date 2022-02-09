@@ -50,6 +50,17 @@
             </a>
           </div>
 
+          <div v-if="blog.tags.length > 0" class="mt-3">
+            <span
+              class="badge badge-tag mr-2"
+              v-for="(tag, index) in blog.tags"
+              :key="index"
+              :style="`background-color: ${tag.color}`"
+            >
+              {{ tag.name }}
+            </span>
+          </div>
+
           <div class="my-4 blog-body" v-html="content"></div>
         </div>
       </div>
@@ -85,5 +96,10 @@ onMounted(() => {
   @media(min-width: 768px) {
     margin-bottom: 5rem !important;
   }
+}
+
+.badge-tag {
+  font-size: 16px;
+  padding: 10px 30px;
 }
 </style>
