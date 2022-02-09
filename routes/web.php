@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{ AdminController, BadgesController, BlogController, DashboardController };
+use App\Http\Controllers\{ AdminController, BadgesController, BlogController, DashboardController, TagController};
 use App\Http\Controllers\Admin\BlogController as AdminBlogController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\PersonalController;
@@ -63,4 +63,10 @@ Route::controller(AdminController::class)->group(function () {
     Route::put('/admin/{id}', 'update')->name('adminUpdate');
     Route::delete('/admin/{id}', 'delete')->name('adminDelete');
     Route::get('/admin/{id}/edit', 'edit')->name('adminEdit');
+});
+
+Route::controller(TagController::class)->group(function () {
+    Route::get('/admin/tag', 'index')->name('tagIndex');
+    Route::post('/admin/tag', 'store')->name('tagStore');
+    Route::delete('/admin/tag/{tag}', 'delete')->name('tagDelete');
 });
