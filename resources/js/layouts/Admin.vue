@@ -22,6 +22,11 @@
           </a>
         </div>
         <div class="menu px-4">
+          <a href="/admin/tag" class="menu--link">
+            Tags
+          </a>
+        </div>
+        <div class="menu px-4">
           <a href="#" class="menu--link" @click="handleLogout">
             Logout
           </a>

@@ -13,6 +13,7 @@
           <div class="input-group-prepend">
             <div class="input-group-text">Escribe el título que deseas filter</div>
           </div>
+          
           <input
             type="text"
             class="form-control"
@@ -26,6 +27,18 @@
           >
             Buscar
           </button>
+        </div>
+
+        <div v-if="tags.length > 0">
+          <span
+            class="badge badge-tag mr-2"
+            v-for="(tag, index) in tags"
+            :key="index"
+            :style="`background-color: ${tag.color}`"
+            @click="searchByTag(tag)"
+          >
+            {{ tag.name }}
+          </span>
         </div>
       </div>
       <div v-show="blogs.length > 0">
@@ -90,11 +103,13 @@ import { onMounted, ref } from 'vue';
 import Spinner from '../Spinner.vue';
 
 const props = defineProps({
-  currentYear: Number
+  currentYear: Number,
+  tags: Array
 })
 
 const blogs = ref([])
 const filter = ref(null)
+const selectedTag = ref(null)
 const isLoading = ref(true)
 const result = ref({})
 const currentPage = ref(1)
@@ -119,6 +134,10 @@ async function handlePageChanged (page) {
       url.searchParams.append('q', filter.value)      
     }
 
+    if (selectedTag.value) {
+      url.searchParams.append('tag', selectedTag.value.name)
+    }
+
     const response = await axios.get(url)
     blogs.value = await response.data.data
     result.value = await response.data
@@ -130,6 +149,11 @@ async function handlePageChanged (page) {
 
 function checkIfActive(currentPage) {
   return currentPage === result.value.current_page ? 'active' : null
+}
+
+const searchByTag = (tag) => {
+  selectedTag.value = tag
+  handlePageChanged(1)
 }
 </script>
 
@@ -161,5 +185,14 @@ function checkIfActive(currentPage) {
   grid-template-columns: 1fr;
   place-items: center;
   height: 80vh;
+}
+
+.badge-tag {
+  font-size: 16px;
+  padding: 10px 30px;
+  color: black;
+  &:hover {
+    cursor: pointer;
+  }
 }
 </style>

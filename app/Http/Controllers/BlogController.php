@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Enums\BlogStatus;
 use App\Models\Blog;
+use App\Models\Tag;
 use App\Services\GetCurrentYear;
+use Illuminate\Contracts\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -20,12 +23,13 @@ class BlogController extends Controller
     public function index(): View
     {
         return view('blogs')
+            ->with('tags', Tag::all())
             ->with('currentYear', $this->getCurrentYear->__invoke());
     }
 
     public function show($seo): View
     {
-        $blog = Blog::select(['title','seo','thumbnail','content','published_at'])
+        $blog = Blog::with('tags')
             ->where('seo', $seo)
             ->where('publish', BlogStatus::ACTIVE)
             ->first();
@@ -46,6 +50,14 @@ class BlogController extends Controller
         if ($request->q) {
             $query = $request->q;
             $blogs = $blogs->where('title', 'LIKE', "%{$query}%");
+        }
+
+        if ($request->tag) {
+            $tagName = $request->tag;
+            $blogs = $blogs->whereHas('tags', function (EloquentBuilder $queryBuilder) use ($tagName) {
+                $tag = Tag::where('name', $tagName)->first();
+                $queryBuilder->where('tag_id', '=', $tag->id);
+            });
         }
 
         $blogs = $blogs

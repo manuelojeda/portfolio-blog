@@ -4,7 +4,11 @@
       :app-name="appName"
     >
       <section class="container-fluid">
-        <admin-blog-form :blog="blog" is-edit />
+        <admin-blog-form
+          :blog="blog"
+          :tags="tags"
+          is-edit
+        />
       </section>
     </admin-layout>
   </div>
@@ -15,6 +19,7 @@ import AdminBlogForm from '@/Admin/components/Blog/Form.vue'
 
 const props = defineProps({
   appName: String,
-  blog: Object
+  blog: Object,
+  tags: Array
 })
 </script>
