@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\BlogStatus;
 use Carbon\Carbon;
 use App\Models\Tag;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -20,6 +21,10 @@ class Blog extends Model
         'title',
         'thumbnail',
         'content'
+    ];
+
+    protected $casts = [
+        'publish' => BlogStatus::class
     ];
 
     public function createdAt(): Attribute

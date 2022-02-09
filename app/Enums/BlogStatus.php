@@ -2,8 +2,8 @@
 
 namespace App\Enums;
 
-class BlogStatus
+enum BlogStatus: int
 {
-    public const ACTIVE = 1;
-    public const INACTIVE = 0;
+    case ACTIVE = 1;
+    case INACTIVE = 0;
 }
