@@ -5,6 +5,7 @@
         <title>Manuel Ojeda - @yield('pageTitle')</title>
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="@yield('pageDescription')">
         <meta property="og:title" content="@yield('pageTitle')" />
         <meta property="og:type" content="@yield('pageType')" />
         <meta property="og:url" content="@yield('pageUrl')" />

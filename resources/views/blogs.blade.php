@@ -4,6 +4,7 @@
 @section('pageType', 'article')
 @section('pageImage', url('img/profile_pic.jpg'))
 @section('pageUrl', url('/Blog'))
+@section('pageDescription', 'Mi blog personal')
 
 @section('content')
     <blogs
