@@ -5,6 +5,7 @@ namespace App\Services\Admin;
 use App\Http\Requests\UpdatePersonalRequest;
 use App\Personal;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Collection;
 
 class PersonalService
 {
@@ -40,11 +41,12 @@ class PersonalService
         }
     }
 
-    private function saveProfilePic(array $data, UpdatePersonalRequest $request)
+    private function saveProfilePic(array $data, UpdatePersonalRequest $request): array
     {
         $request->file->move('img', 'profile_pic.jpg');
-        $json_data = collect($data['data']);
-        $json_data['photo'] = '/img/profile_pic.jpg';
-        return $json_data;
+        $arrayData = (array) $data['data'];
+        $jsonData = collect($arrayData);
+        $jsonData['photo'] = '/img/profile_pic.jpg';
+        return $jsonData->toArray();
     }
 }

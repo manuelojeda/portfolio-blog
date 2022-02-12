@@ -12,11 +12,9 @@ use Illuminate\View\View;
 class BlogController extends Controller
 {
     public function __construct(
-        private GetCurrentYear $getCurrentYear,
-        private BlogService $blogService
+        private GetCurrentYear $getCurrentYear
     ) {
         $this->getCurrentYear = new GetCurrentYear();
-        $this->blogService = new BlogService();
     }
 
     public function index(): View
@@ -26,9 +24,9 @@ class BlogController extends Controller
             ->with('currentYear', $this->getCurrentYear->__invoke());
     }
 
-    public function show($seo): View
+    public function show(string $seo, BlogService $blogService): View
     {
-        $blog = $this->blogService->getBlog($seo);
+        $blog = $blogService->getBlog($seo);
 
         if (!$blog) {
             abort(404);
@@ -38,9 +36,9 @@ class BlogController extends Controller
             ->with('currentYear', $this->getCurrentYear->__invoke());
     }
 
-    public function paginate(Request $request): JsonResponse
+    public function paginate(Request $request, BlogService $blogService): JsonResponse
     {
-        $blogs = $this->blogService->getPaginatedBlogs($request);
+        $blogs = $blogService->getPaginatedBlogs($request);
 
         return response()->json($blogs, 200);
     }

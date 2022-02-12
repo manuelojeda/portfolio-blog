@@ -18,6 +18,9 @@ class Tag extends Model
         'color',
     ];
 
+    /**
+     * @return BelongsToMany<Blog>
+     */
     public function blogs(): BelongsToMany
     {
         return $this->belongsToMany(

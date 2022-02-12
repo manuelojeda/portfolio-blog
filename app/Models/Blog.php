@@ -43,6 +43,9 @@ class Blog extends Model
         );
     }
 
+    /**
+     * @return BelongsToMany<Tag>
+     */
     public function tags(): BelongsToMany
     {
         return $this->belongsToMany(

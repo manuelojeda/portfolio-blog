@@ -33,7 +33,7 @@ class TagController extends Controller
         ], 200);
     }
 
-    public function delete(Tag $tag)
+    public function delete(Tag $tag): JsonResponse
     {
         $tag->delete();
 

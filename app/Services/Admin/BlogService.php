@@ -12,11 +12,17 @@ use Illuminate\Support\Collection;
 
 class BlogService
 {
-    public function getAllBlogs()
+    /**
+     * @return Collection<int, Blog>
+     */
+    public function getAllBlogs(): Collection
     {
         return Blog::all();
     }
-
+    
+    /**
+     * @return Collection<string, bool|string>
+     */
     public function storeBlog(array $data): Collection
     {
         $blog = new Blog($data);
@@ -63,6 +69,9 @@ class BlogService
         }
     }
 
+    /**
+     * @return Collection<string, bool|string>
+     */
     public function deleteBlog(Blog $blog): Collection
     {
         if ($blog->delete()) {
@@ -82,6 +91,9 @@ class BlogService
         return $response;
     }
 
+    /**
+     * @return Collection<string, bool|string>
+     */
     public function setStatus(SetStatusBlogRequest $request): Collection
     {
         $blog = Blog::findOrFail($request->id);
@@ -124,7 +136,7 @@ class BlogService
         }
     }
 
-    private function deleteTags(Blog $blog)
+    private function deleteTags(Blog $blog): void
     {
         /** @var TagBlog[] */
         $blogTags = TagBlog::where('blog_id', $blog->id)->get();

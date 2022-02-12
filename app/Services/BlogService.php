@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class BlogService
 {
-    public function getBlog(string $seo)
+    public function getBlog(string $seo): ?Blog
     {
         return Blog::with('tags')
             ->where('seo', $seo)

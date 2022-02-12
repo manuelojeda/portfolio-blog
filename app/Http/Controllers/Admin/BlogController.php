@@ -30,11 +30,11 @@ class BlogController extends Controller
             ->with('tags', Tag::all());
     }
 
-    public function store(BlogRequest $request)
+    public function store(BlogRequest $request): array
     {
         return $this->blogService->storeBlog(
             data: $request->toArray()
-        );
+        )->toArray();
     }
 
     public function edit(int $blogId): View
@@ -53,16 +53,18 @@ class BlogController extends Controller
         );
     }
 
-    public function destroy(Blog $blog): Collection
+    public function destroy(Blog $blog): array
     {
-        return $this->blogService->deleteBlog($blog);
+        return $this->blogService
+            ->deleteBlog($blog)
+            ->toArray();
     }
 
-    public function setStatus(SetStatusBlogRequest $request)
+    public function setStatus(SetStatusBlogRequest $request): array
     {
         return $this->blogService->setStatus(
             request: $request
-        );
+        )->toArray();
     }
 
     public function paginate(Request $request): JsonResponse
