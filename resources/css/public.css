@@ -88,3 +88,10 @@ h5 {
   @apply text-black;
 }
 
+.fa-vuejs {
+  color: #42b883;
+}
+
+.fa-laravel {
+  color: #f05340;
+}
