@@ -29,7 +29,6 @@ Route::controller(BadgesController::class)->group(function () {
 });
 
 Route::controller(BlogController::class)->group(function () {
-    Route::get('/Blog', 'index');
     Route::get('/blog/paginate', 'paginate');
     Route::get('/Blog/{seo}', 'show');
 });
