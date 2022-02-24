@@ -41,6 +41,6 @@ class BlogService
 
         return $blogs
             ->orderBy('created_at', 'desc')
-            ->paginate(4);
+            ->paginate(8);
     }
 }

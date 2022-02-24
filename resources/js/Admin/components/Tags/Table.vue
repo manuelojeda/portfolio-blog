@@ -48,7 +48,7 @@ const props = defineProps({
 
 const emits = defineEmits([
   'handleEditableTag',
-  'handleDeletableTag',
+  'handleDeletableTag'
 ])
 
 function handleEdit (tag) {

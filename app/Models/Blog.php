@@ -2,18 +2,22 @@
 
 namespace App\Models;
 
-use App\Enums\BlogStatus;
 use Carbon\Carbon;
 use App\Models\Tag;
-use Illuminate\Database\Eloquent\Casts\Attribute;
+use App\Enums\BlogStatus;
+use Illuminate\Support\Str;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Jenssegers\Date\Date;
 
 class Blog extends Model
 {
     use HasSlug;
+
+    const EXCERPT_LENGHT = 100;
 
     protected $table = "blog";
 
@@ -37,8 +41,9 @@ class Blog extends Model
 
     public function publishedAt(): Attribute
     {
+        Date::setLocale('es');
         return new Attribute(
-            get: fn ($value) => Carbon::parse($value)->format('d-m-Y H:i'),
+            get: fn ($value) => Date::parse($value)->format('j \de F \de Y'),
             set: fn ($value) => $value
         );
     }

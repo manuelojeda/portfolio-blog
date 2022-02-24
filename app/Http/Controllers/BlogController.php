@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tag;
+use App\Models\Blog;
 use App\Services\BlogService;
 use App\Services\GetCurrentYear;
 use Illuminate\Http\JsonResponse;
@@ -38,6 +39,7 @@ class BlogController extends Controller
 
     public function paginate(Request $request, BlogService $blogService): JsonResponse
     {
+        /** @var Blog[] */
         $blogs = $blogService->getPaginatedBlogs($request);
 
         return response()->json($blogs, 200);

@@ -1,13 +1,10 @@
 @extends('layouts.public')
 
-@section('pageTitle','Portfolio')
+@section('pageTitle','Blog')
 @section('pageType', 'website')
 @section('pageImage', url('img/profile_pic.jpg'))
 @section('pageUrl', url('/'))
 
 @section('content')
-    <app
-        :personal="{{ $personal }}"
-        :current-year="{{ $currentYear }}"
-    ></app>
+    <blog-index></blog-index>
 @endsection
