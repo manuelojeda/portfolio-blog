@@ -2,16 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  font-family: 'Roboto', sans-serif;
+@font-face { 
+  font-family: Cascadia Code; 
+  src: url(https://www.programmingfonts.org/fonts/resources/cascadia-code/cascadia-code.ttf);
+} 
+pre, code, code > * {
+  font-family: Cascadia Code !important;
 }
+
 
 h1,
 h2,
 h3,
 h4,
 h5 {
+  font-family: 'Roboto', sans-serif;
   @apply font-bold;
+}
+
+p, ol, li, ul {
+  font-family: 'Roboto', sans-serif;
 }
 
 h1 {
