@@ -1,7 +1,7 @@
 <template>
   <footer>
     <div class="flex flex-col items-center my-8">
-      <p class="text-md tracking-wide text-gray-500 dark:text-gray-400 mb-2">
+      <p class="text-md tracking-wide mb-2">
         Made by <b>Manuel Ojeda</b> to the 🌐 - © 2022 -
         <span>
           Powered with:

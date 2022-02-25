@@ -41,8 +41,8 @@ h5 {
 }
 
 .dark-theme {
-  @apply dark:bg-neutral-800;
-  @apply dark:text-slate-200;
+  @apply bg-neutral-800;
+  @apply text-slate-200;
   @apply text-base;
 }
 
@@ -51,7 +51,7 @@ h5 {
 .dark-theme h3,
 .dark-theme h4,
 .dark-theme h5 {
-  @apply dark:text-white;
+  @apply text-white;
 }
 
 .main-container {
@@ -86,10 +86,10 @@ h5 {
   @apply mb-5 !important;
 }
 .blog-main a {
-  @apply dark:text-blue-400;
+  @apply text-blue-400;
 }
 .blog-main a.button {
-  @apply dark:text-white;
+  @apply text-white;
 }
 
 .badge-tag {

@@ -5,8 +5,8 @@
       :alt="blog.title"
       class="rounded-lg mb-4 mx-auto sm:max-h-32"
     >
-    <p class="font-bold text-center text-lg dark:text-sky-500">
-      <small class="block mb-1 text-gray-800 dark:text-white">
+    <p class="font-bold text-center text-lg text-sky-500">
+      <small class="block mb-1 text-gray-800 text-white">
         Publicado en {{ blog.published_at }}
       </small>
       {{ blog.title }}
@@ -23,5 +23,6 @@ const props = defineProps({
 <style lang="scss" scoped>
 small {
   font-size: 70%;
+  color: white !important;
 }
 </style>
