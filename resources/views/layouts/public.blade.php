@@ -20,9 +20,6 @@
         <link rel="stylesheet" href="{{ asset('css/prism.css') }}">
     </head>
     <body class="dark-theme">
-        <div id="fb-root"></div>
-        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.3&appId=475808966502918&autoLogAppEvents=1"></script>
-        
         <div id="app">
             @yield('content')
         </div>
