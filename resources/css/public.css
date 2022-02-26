@@ -20,7 +20,7 @@ h5 {
   @apply font-bold;
 }
 
-p, ol, li, ul {
+p, ol, li, ul, label, .badge-tag {
   font-family: 'Roboto', sans-serif;
 }
 
@@ -93,9 +93,10 @@ h5 {
 }
 
 .badge-tag {
-  font-size: 16px;
-  padding: 10px 30px;
+  font-size: 0.8rem;
+  padding: 8px 20px;
   @apply text-black;
+  @apply font-bold
 }
 
 .fa-vuejs {

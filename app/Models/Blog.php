@@ -10,6 +10,7 @@ use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Jenssegers\Date\Date;
 
@@ -66,5 +67,25 @@ class Blog extends Model
         return SlugOptions::create()
             ->generateSlugsFrom('title')
             ->saveSlugsTo('seo');
+    }
+
+    public function scopeGetBlogActiveBlog(Builder $query, string $seo): Builder
+    {
+        return $query->with('tags')
+            ->where('seo', $seo)
+            ->wherePublish(BlogStatus::ACTIVE);
+    }
+
+    public function scopeSearchByTitle(Builder $query, string $title): Builder
+    {
+        return $query->where('title', 'LIKE', "%{$title}%");
+    }
+
+    public function scopeSearchByTag(Builder $query, string $tagName): Builder
+    {
+        return $query->whereHas('tags', function (Builder $queryBuilder) use ($tagName) {
+            $tag = Tag::whereName($tagName)->first();
+            $queryBuilder->whereTagId($tag->id);
+        });
     }
 }

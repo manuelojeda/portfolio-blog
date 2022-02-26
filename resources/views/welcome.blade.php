@@ -6,5 +6,7 @@
 @section('pageUrl', url('/'))
 
 @section('content')
-    <blog-index></blog-index>
+    <blog-index
+        :tags="{{ $tags }}"
+    ></blog-index>
 @endsection
