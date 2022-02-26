@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 <template>
   <span
-    class="badge badge-tag mr-2 rounded-md"
+    class="badge badge-tag mr-2 rounded-md inline-block mb-2"
     :style="`background-color: ${tag.color}`"
     @click="handleSelectedTag(tag)"
     :class="[isSearchableTag(), { 'border-emerald-700 border border-2': active }]"

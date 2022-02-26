@@ -25,7 +25,7 @@
           />
 
           <span
-            class="badge badge-tag mr-2 bg-gray-300 hover:cursor-pointer hover:opacity-25 ease-in-out duration-200 rounded-md"
+            class="badge badge-tag mr-2 bg-gray-300 hover:cursor-pointer hover:opacity-25 ease-in-out duration-200 rounded-md inline-block mb-2"
             @click="handleSelectedTag(null)"
           >
             Todos
