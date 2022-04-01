@@ -14,6 +14,7 @@ class BlogController extends Controller
 {
     public function show(string $seo, BlogService $blogService): View
     {
+        /** @var Blog|null $blog */
         $blog = $blogService->getBlog($seo);
 
         if (!$blog) {

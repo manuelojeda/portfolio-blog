@@ -25,7 +25,9 @@ class Blog extends Model
     protected $fillable = [
         'title',
         'thumbnail',
-        'content'
+        'content',
+        'video_url',
+        'is_video'
     ];
 
     protected $casts = [

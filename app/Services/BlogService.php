@@ -21,14 +21,16 @@ class BlogService
     public function getPaginatedBlogs(Request $request): LengthAwarePaginator
     {
         $blogs = Blog::query()
-            ->wherePublish(BlogStatus::ACTIVE->value)
+            ->where('publish', BlogStatus::ACTIVE->value)
             ->select([
                 'title',
                 'seo',
                 'thumbnail',
                 'content',
                 'updated_at',
-                'published_at'
+                'published_at',
+                'is_video',
+                'video_url'
             ]);
 
         if ($request->q) {

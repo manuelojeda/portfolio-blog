@@ -1,5 +1,5 @@
 <template>
-  <a :href="`/Blog/${blog.seo}`" class="mb-4 hover:bg-neutral-600 p-2 rounded-lg ease-out duration-300">
+  <a :href="computedUrl.link" :target="computedUrl.target" class="mb-4 hover:bg-neutral-600 p-2 rounded-lg ease-out duration-300">
     <img
       :src="blog.thumbnail"
       :alt="blog.title"
@@ -15,8 +15,24 @@
 </template>
 
 <script setup>
+import {computed} from "vue";
+
 const props = defineProps({
   blog: Object
+})
+
+const computedUrl = computed(() => {
+  if (props.blog.is_video) {
+    return {
+      link: props.blog.video_url,
+      target: '_blank'
+    };
+  }
+
+  return {
+    link: `/Blog/${props.blog.seo}`,
+    target: null
+  };
 })
 </script>
 
