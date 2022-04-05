@@ -1,7 +1,7 @@
-import { createApp } from 'vue'
+import {App, createApp} from 'vue'
 import { initComponents } from './initComponents'
 
-const app = createApp({})
+const app: App<Element> = createApp({})
 
 initComponents(app)
 

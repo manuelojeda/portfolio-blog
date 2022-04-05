@@ -29,30 +29,27 @@
         />
       </div>
 
-      <div class="my-4 blog-body" v-html="content"></div>
+      <div class="my-4 blog-body" v-html="blog.content"></div>
     </div>
   </PublicLayout>
 </template>
 
-<script setup>
-import MarkdownIt from 'markdown-it'
+<script lang="ts" setup>
 import { onMounted, ref } from 'vue'
 import PublicLayout from '../../layouts/PublicLayout.vue'
 import TagItem from '../Components/TagItem.vue'
 import BreadcumbsList from '../Components/BreadcumbsList.vue'
+import Blog from "../Interfaces/Blog";
 
 // eslint-disable-next-line no-undef
 const props = defineProps({
-  blog: Object,
+  blog: Object as () => Blog,
   currentYear: Number
 })
 
-const tweet = ref('')
-const content = ref(null)
+const tweet = ref<string>('')
 
 onMounted(() => {
-  const md = new MarkdownIt()
-  content.value = md.render(props.blog.content)
   tweet.value = `text=${props.blog.title}&url=https://manuelojeda.xyz/Blog/${props.blog.seo}`
 })
 </script>

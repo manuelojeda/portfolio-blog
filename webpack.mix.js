@@ -13,7 +13,7 @@ const path = require('path')
  */
 
 mix
-  .js('resources/js/Public/app.js', 'public/js')
+  .ts('resources/js/Public/app.ts', 'public/js')
   .js('resources/js/Admin/admin.js', 'public/js')
   .sass('resources/sass/app.scss', 'public/css')
   .sass('resources/sass/dark.scss', 'public/css')

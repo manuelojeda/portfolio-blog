@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 <template>
   <span
     class="badge badge-tag mr-2 rounded-md inline-block mb-2"
@@ -10,11 +9,11 @@
   </span>
 </template>
 
-<script setup>
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
+<script lang="ts" setup>
+import Tag from "../Interfaces/Tag";
+
 const props = defineProps({
-  tag: Object,
+  tag: Object as () => Tag,
   searchable: {
     default: false
   },
@@ -27,7 +26,7 @@ const emit = defineEmits([
   'handleSelectedTag'
 ])
 
-const handleSelectedTag = (tag) => {
+const handleSelectedTag = (tag: Tag) => {
   emit('handleSelectedTag', tag)
 }
 
