@@ -27,9 +27,22 @@
             <input v-model="form.title" name="title" type="text" class="form-control">
           </div>
         </div>
+
+        <div class="col-12 mb-3">
+          <div class="form-group mb-1">
+            <label class="mr-2">Is this a Video?</label>
+            <input v-model="form.is_video" name="is_video" type="checkbox">
+          </div>
+
+          <div class="form-group" v-show="form.is_video">
+            <label class="mr-2">Video URL</label>
+            <input v-model="form.video_url" name="video_url" type="text" class="form-control">
+          </div>
+        </div>
+
         <div class="col-12 mb-3">
           <div class="form-group">
-            <label for="title">Thumbnail URL</label>
+            <label for="thumbnailUrl">Thumbnail URL</label>
             <input v-model="form.thumbnail" name="title" type="text" class="form-control">
           </div>
         </div>
@@ -137,6 +150,8 @@ const form = ref({
   title: '',
   thumbnail: '',
   content: '',
+  is_video: false,
+  video_url: null,
   tags: []
 })
 

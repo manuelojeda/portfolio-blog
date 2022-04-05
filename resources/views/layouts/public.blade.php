@@ -12,20 +12,17 @@
         <meta property="og:image" content="@yield('pageImage')" />
         <meta property="og:site_name" content="Manuel Ojeda" />
         <meta name="theme-color" content="#017BB0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-        <link rel="stylesheet" href="{{ mix('css/dark.css') }}">
+        <link rel="stylesheet" href="{{ mix('css/public.css') }}">
         <link rel="stylesheet" href="{{ asset('css/prism.css') }}">
     </head>
-    <body>
-        <div id="fb-root"></div>
-        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.3&appId=475808966502918&autoLogAppEvents=1"></script>
-        
+    <body class="dark-theme">
         <div id="app">
             @yield('content')
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
         <script src="{{ asset('js/prism.js') }}"></script>
         <script src="{{ mix('js/manifest.js')}}"></script>
         <script src="{{ mix('js/vendor.js')}}"></script>

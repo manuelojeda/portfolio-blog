@@ -7,8 +7,7 @@
 @section('pageDescription', $blog->title)
 
 @section('content')
-    <blog 
+    <blog-entry
         :blog="{{$blog}}"
-        :current-year="{{ $currentYear }}"
-    ></blog>
+    ></blog-entry>
 @endsection

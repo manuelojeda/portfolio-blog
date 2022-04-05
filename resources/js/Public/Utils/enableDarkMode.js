@@ -6,6 +6,7 @@ const enableDarkMode = () => {
 export const handleDarkModeTheme = (isEnabled = false) => {
   const body = document.getElementsByTagName('body')[0]
   body.classList.remove('dark-theme')
+
   if (isEnabled) {
     body.classList.add('dark-theme')
   }

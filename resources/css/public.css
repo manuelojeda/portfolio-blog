@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face { 
+  font-family: Cascadia Code; 
+  src: url(https://www.programmingfonts.org/fonts/resources/cascadia-code/cascadia-code.ttf);
+} 
+pre, code, code > * {
+  font-family: Cascadia Code !important;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Roboto', sans-serif;
+  @apply font-bold;
+}
+
+p, ol, li, ul, label, .badge-tag {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+  @apply text-5xl;
+}
+h2 {
+  @apply text-4xl;
+}
+h3 {
+  @apply text-3xl;
+}
+h4 {
+  @apply text-2xl;
+}
+h5 {
+  @apply text-xl;
+}
+
+.dark-theme {
+  @apply bg-neutral-800;
+  @apply text-slate-200;
+  @apply text-base;
+}
+
+.dark-theme h1,
+.dark-theme h2,
+.dark-theme h3,
+.dark-theme h4,
+.dark-theme h5 {
+  @apply text-white;
+}
+
+.main-container {
+  @apply container;
+  @apply mx-auto;
+  @apply px-7;
+  @apply xl:px-24;
+  @apply 2xl:px-48;
+}
+
+.blog-main {
+  @apply my-10;
+}
+
+.blog-main h3 {
+  @apply mb-2;
+}
+.blog-main p,
+.blog-main ul {
+  @apply mb-5;
+}
+
+.blog-main ul {
+  @apply list-disc;
+  @apply px-10;
+}
+
+.blog-main img {
+  @apply mx-auto;
+}
+.blog-main pre {
+  @apply mb-5 !important;
+}
+.blog-main a {
+  @apply text-blue-400;
+}
+.blog-main a.button {
+  @apply text-white;
+}
+
+.badge-tag {
+  font-size: 0.8rem;
+  padding: 8px 20px;
+  @apply text-black;
+  @apply font-bold
+}
+
+.fa-vuejs {
+  color: #42b883;
+}
+
+.fa-laravel {
+  color: #f05340;
+}

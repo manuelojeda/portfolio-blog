@@ -13,34 +13,39 @@ class BlogService
 {
     public function getBlog(string $seo): ?Blog
     {
-        return Blog::with('tags')
-            ->where('seo', $seo)
-            ->wherePublish(BlogStatus::ACTIVE)
+        return Blog::query()
+            ->getBlogActiveBlog($seo)
             ->first();
     }
 
     public function getPaginatedBlogs(Request $request): LengthAwarePaginator
     {
-        /** @var Builder */
-        $blogs = Blog::select(['title','seo','thumbnail','content','updated_at', 'published_at'])
-            ->wherePublish(BlogStatus::ACTIVE->value);
+        $blogs = Blog::query()
+            ->where('publish', BlogStatus::ACTIVE->value)
+            ->select([
+                'title',
+                'seo',
+                'thumbnail',
+                'content',
+                'updated_at',
+                'published_at',
+                'is_video',
+                'video_url'
+            ]);
 
         if ($request->q) {
             /** @var string */
             $query = $request->q;
-            $blogs = $blogs->where('title', 'LIKE', "%{$query}%");
+            $blogs = $blogs->searchByTitle($query);
         }
 
         if ($request->tag) {
             $tagName = $request->tag;
-            $blogs = $blogs->whereHas('tags', function (Builder $queryBuilder) use ($tagName) {
-                $tag = Tag::whereName($tagName)->first();
-                $queryBuilder->whereTagId($tag->id);
-            });
+            $blogs = $blogs->searchByTag($tagName);
         }
 
         return $blogs
             ->orderBy('created_at', 'desc')
-            ->paginate(4);
+            ->paginate(8);
     }
 }

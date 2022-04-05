@@ -1,19 +1,8 @@
 import { createApp } from 'vue'
-import axios from 'axios'
-import { createPinia } from 'pinia'
-import enableDarkMode from './Utils/enableDarkMode'
-import initializeComponents from './imports'
-
-axios.defaults.headers.get['Content-Type'] = 'application/json'
-axios.defaults.headers.get['Cache-Control'] = 'no-cache'
-
-enableDarkMode()
+import { initComponents } from './initComponents'
 
 const app = createApp({})
 
-app.use(createPinia())
-
-initializeComponents(app)
+initComponents(app)
 
 app.mount('#app')
-

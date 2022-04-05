@@ -2,25 +2,32 @@
 
 namespace App\Models;
 
-use App\Enums\BlogStatus;
 use Carbon\Carbon;
 use App\Models\Tag;
-use Illuminate\Database\Eloquent\Casts\Attribute;
+use App\Enums\BlogStatus;
+use Illuminate\Support\Str;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Jenssegers\Date\Date;
 
 class Blog extends Model
 {
     use HasSlug;
+
+    const EXCERPT_LENGHT = 100;
 
     protected $table = "blog";
 
     protected $fillable = [
         'title',
         'thumbnail',
-        'content'
+        'content',
+        'video_url',
+        'is_video'
     ];
 
     protected $casts = [
@@ -37,8 +44,9 @@ class Blog extends Model
 
     public function publishedAt(): Attribute
     {
+        Date::setLocale('es');
         return new Attribute(
-            get: fn ($value) => Carbon::parse($value)->format('d-m-Y H:i'),
+            get: fn ($value) => Date::parse($value)->format('j \de F \de Y'),
             set: fn ($value) => $value
         );
     }
@@ -61,5 +69,25 @@ class Blog extends Model
         return SlugOptions::create()
             ->generateSlugsFrom('title')
             ->saveSlugsTo('seo');
+    }
+
+    public function scopeGetBlogActiveBlog(Builder $query, string $seo): Builder
+    {
+        return $query->with('tags')
+            ->where('seo', $seo)
+            ->wherePublish(BlogStatus::ACTIVE);
+    }
+
+    public function scopeSearchByTitle(Builder $query, string $title): Builder
+    {
+        return $query->where('title', 'LIKE', "%{$title}%");
+    }
+
+    public function scopeSearchByTag(Builder $query, string $tagName): Builder
+    {
+        return $query->whereHas('tags', function (Builder $queryBuilder) use ($tagName) {
+            $tag = Tag::whereName($tagName)->first();
+            $queryBuilder->whereTagId($tag->id);
+        });
     }
 }

@@ -17,6 +17,9 @@ mix
   .js('resources/js/Admin/admin.js', 'public/js')
   .sass('resources/sass/app.scss', 'public/css')
   .sass('resources/sass/dark.scss', 'public/css')
+  .postCss('resources/css/public.css', 'public/css', [
+    require('tailwindcss')
+  ])
   .options({
     terser: {}
   })
