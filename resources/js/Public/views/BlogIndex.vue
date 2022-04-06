@@ -73,7 +73,7 @@ const links = ref<Array<Link>>(null)
 const getPaginatedBlogs = (clickableUrl: string = null): void => {
   isLoading.value = true
 
-  let url = new URL(window.location.origin + '/blog/paginate')
+  let url = new URL(`${window.location.origin}/blog/paginate`)
 
   if (clickableUrl) {
     url = new URL(clickableUrl)
