@@ -1,35 +1,30 @@
 <template>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-12 col-md-6 mb-3">
-        <div class="float-left">
-          <div class="input-group my-2">
-            <div class="input-group-prepend">
-              <div class="input-group-text mr-2">Search</div>
-            </div>
-            <input
-              type="text"
-              class="form-control"
-              :value="filter"
-              @input="$emit('update:filter', $event.target.value)"
-              @keyup.enter="handlePageChanged(1)"
-            >
-            <button
-              class="btn btn-primary"
-              @click="handlePageChanged(1)"
-            >
-              Buscar
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="input-group my-2">
+    <input
+      type="text"
+      class="border border-black rounded-l"
+      :value="filter"
+      @input="$emit('update:filter', $event.target.value)"
+      @keyup.enter="handlePageChanged(1)"
+    >
+    <button
+      class="bg-blue-500 text-white px-5"
+      @click="handlePageChanged(1)"
+    >
+      Buscar
+    </button>
   </div>
-  <section class="table-responsive">
-    <table class="table table-striped table-bordered table-hover">
-      <thead>
+
+  <section
+    class="shadow-md sm:rounded-lg"
+  >
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <thead
+        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+      >
         <tr>
           <th
+            class="px-6 py-3"
             v-for="(field, index) in fields"
             :index="index"
           >
@@ -39,30 +34,31 @@
       </thead>
       <tbody>
         <tr
+          class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
           v-for="(blog, index) in blogs"
           :index="index"
         >
-          <td>{{ blog.title }}</td>
-          <td>
-            <span v-if="blog.publish === 1">
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">{{ blog.title }}</td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+            <span v-if="blog.publish === 1" class="bg-green-500 text-white px-4 py-2 rounded">
               Active
             </span>
-            <span v-else>
+            <span v-else class="bg-red-700 text-white px-4 py-2 rounded">
               Inactive
             </span>
           </td>
-          <td>{{ blog.created_at }}</td>
-          <td>{{ blog.published_at }}</td>
-          <td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">{{ blog.created_at }}</td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">{{ blog.published_at }}</td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
             <a
               :href="`/admin/blogs/${blog.id}/edit`"
-              class="btn btn-info my-2"
+              class="bg-cyan-300 text-white py-2 px-4 rounded mr-2"
             >
               Edit
             </a>
             <button
-              class="btn m-2"
-              :class="{ 'btn-warning': blog.publish === 1, 'btn-success': blog.publish === 0 }"
+              class="py-2 px-4 rounded mr-2 text-white"
+              :class="{ 'bg-yellow-500': blog.publish === 1, 'bg-green-500': blog.publish === 0 }"
               @click="handleSetEntryStatus(blog)"
             >
               <span v-if="blog.publish === 1">
@@ -73,7 +69,7 @@
               </span>
             </button>
             <button
-              class="btn btn-danger my-2"
+              class="bg-red-700 text-white py-2 px-4 rounded mr-2"
               @click="handleDestroyEntry(blog)"
             >
               Destroy
@@ -83,35 +79,14 @@
       </tbody>
     </table>
   </section>
-
-  <nav>
-    <ul class="pagination justify-content-center">
-      <li class="page-item" :class="currentPage === 1 ? 'disabled' : null">
-        <a class="page-link" href="#" @click="handlePageChanged(currentPage - 1)">Previous</a>
-      </li>
-      <li
-        class="page-item" 
-        v-for="(item, index) in lastPage"
-        :index="index"
-        :class="checkIfActive(index + 1)"
-      >
-        <a class="page-link" href="#" @click="handlePageChanged(index + 1)">{{ index + 1 }}</a>
-      </li>
-      <li class="page-item" :class="currentPage === lastPage ? 'disabled' : null">
-        <a class="page-link" href="#" @click="handlePageChanged(currentPage + 1)">Next</a>
-      </li>
-    </ul>
-  </nav>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-
 const props = defineProps({
   blogs: Array,
   currentPage: Number,
-  lastPage: Number,
-  filter: String
+  filter: String,
+  links: Array
 })
 
 const emits = defineEmits([

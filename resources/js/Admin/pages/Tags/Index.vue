@@ -1,16 +1,16 @@
 <template>
   <AdminVue :appName="appName">
-    <section class="container-fluid">
-      <div class="row">
+    <section class="container p-8 mx-auto">
+      <div class="grid grid-cols-1">
         <div class="col-12">
-          <h1 class="mt-2 mb-4">
+          <h1 class="mt-2 mb-4 text-4xl">
             Tags
             <small>Index</small>
           </h1>
         </div>
         <div class="col-12 mb-4">
           <div class="float-right">
-            <button class="btn btn-primary" @click="showForm = !showForm">
+            <button class="bg-blue-500 text-white px-5 py-2 rounded transition hover:bg-blue-700" @click="showForm = !showForm">
               Add a new tag
             </button>
           </div>

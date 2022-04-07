@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.dark-theme {
+  @apply bg-neutral-800;
+  @apply text-slate-200;
+  @apply text-base;
+}
+
+.form-control {
+  @apply appearance-none;
+  @apply block;
+  @apply w-full;
+  @apply bg-gray-200;
+  @apply text-gray-700;
+  @apply border;
+  @apply border-emerald-500;
+  @apply rounded;
+  @apply py-3;
+  @apply px-4;
+  @apply mb-3;
+  @apply leading-tight;
+  @apply focus:outline-none;
+  @apply focus:bg-white;
+}

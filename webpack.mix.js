@@ -14,9 +14,10 @@ const path = require('path')
 
 mix
   .ts('resources/js/Public/app.ts', 'public/js')
-  .js('resources/js/Admin/admin.js', 'public/js')
-  .sass('resources/sass/app.scss', 'public/css')
-  .sass('resources/sass/dark.scss', 'public/css')
+  .ts('resources/js/Admin/admin.ts', 'public/js')
+  .postCss('resources/css/app.css', 'public/css', [
+    require('tailwindcss')
+  ])
   .postCss('resources/css/public.css', 'public/css', [
     require('tailwindcss')
   ])

@@ -15,7 +15,7 @@
           <input type="color" class="form-control" v-model="color" required>
         </div>
         <div class="col-12 col-lg-4 mb-4">
-          <button class="btn btn-primary w-100" type="submit">
+          <button class="bg-blue-500 text-white px-5 py-2 rounded transition hover:bg-blue-700" type="submit">
             Save
           </button>
         </div>

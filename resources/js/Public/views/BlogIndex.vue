@@ -116,5 +116,4 @@ const checkIsActive = (tag: Tag) => {
 onMounted(() => {
   getPaginatedBlogs()
 })
-
 </script>
