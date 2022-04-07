@@ -1,36 +1,37 @@
 <template>
-  <section class="col-12">
-    <div class="table-responsive">
-      <table class="table table-striped table-bordered table-hover">
-        <thead>
+  <section>
+    <div>
+      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
-            <th>
+            <th class="px-6 py-3">
               ID
             </th>
-            <th>
+            <th class="px-6 py-3">
               Name
             </th>
-            <th>
+            <th class="px-6 py-3">
               Color
             </th>
-            <th>
+            <th class="px-6 py-3">
               Option
             </th>
           </tr>
         </thead>
         <tbody>
           <tr
+            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
             v-for="(tag, index) in tags"
             :key="index"
           >
-            <td>{{ tag.id }}</td>
-            <td>{{ tag.name }}</td>
-            <td :style="`background-color: ${tag.color};`">{{ tag.color }}</td>
-            <td>
-              <button class="btn btn-info mx-2" @click="handleEdit(tag)">
+            <td class="px-6 py-4 ">{{ tag.id }}</td>
+            <td class="px-6 py-4 ">{{ tag.name }}</td>
+            <td class="px-6 py-4 text-black" :style="`background-color: ${tag.color};`">{{ tag.color }}</td>
+            <td class="px-6 py-4 ">
+              <button class="bg-cyan-400 text-black px-4 py-2 mr-2 rounded" @click="handleEdit(tag)">
                 Edit
               </button>
-              <button class="btn btn-danger" @click="handleDelete(tag)">
+              <button class="bg-red-600 text-black px-4 py-2 mr-2 rounded" @click="handleDelete(tag)">
                 Delete
               </button>
             </td>

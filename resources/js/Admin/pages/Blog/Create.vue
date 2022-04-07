@@ -3,7 +3,7 @@
     <admin-layout
       :app-name="appName"
     >
-      <section class="container-fluid">
+      <section class="container mx-auto p-8">
         <admin-blog-form />
       </section>
     </admin-layout>

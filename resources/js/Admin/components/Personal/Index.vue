@@ -1,45 +1,20 @@
 <template>
   <div class="grid">
     <div class="grid--image-preview">
-      <label for="">
+      <label>
         <b>
           Image Preview
         </b>
       </label>
-      <img :src="previewPhoto" alt="" class="img-fluid d-block mx-auto">
+      <br />
+      <img :src="previewPhoto" alt="Le photo" class="block max-w-sm mx-auto rounded" />
     </div>
     <div class="grid--form">
       <form @submit.prevent="handleForm">
-        <b-form-group label="Name">
-          <b-form-input
-            v-model="personalData.data.name"
-            type="text"
-            placeholder="Put your name here ..."
-            required
-          />
-        </b-form-group>
-        <b-form-group label="Position">
-          <b-form-input
-            v-model="personalData.data.position"
-            type="text"
-            placeholder="Put your dev position here ..."
-            required
-          />
-        </b-form-group>
-        <b-form-group label="Email">
-          <b-form-input
-            v-model="personalData.data.email"
-            type="email"
-            placeholder="Put your contact email here ..."
-            required
-          />
-        </b-form-group>
-        <b-form-group label="Photo">
-          <file-input v-model="file" is-image />
-        </b-form-group>
+        <file-input v-model="file" is-image />
 
         <div class="d-block w-100 mt-4">
-          <button type="submit" class="btn btn-primary float-right">
+          <button type="submit" class="rounded-none bg-blue-500 px-8 py-2 mt-5 text-white float-right">
             Save
           </button>
         </div>

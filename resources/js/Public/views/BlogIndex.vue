@@ -3,7 +3,9 @@
     <section class="blox-index py-5">
       <div v-if="!isLoading">
         <div class="mb-5">
-          <label for="searchBar" class="font-bold">Buscar</label>
+          <label class="font-bold">
+            Buscar
+          </label>
           <input
             title="searchBar"
             type="text"
@@ -46,9 +48,7 @@
   </PublicLayout>
 </template>
 
-<script setup>
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
+<script setup lang="ts">
 import axios from 'axios'
 import { onMounted, ref } from 'vue'
 import PublicLayout from '../../layouts/PublicLayout.vue'
@@ -56,21 +56,24 @@ import SpinnerItem from '../Components/SpinnerItem.vue'
 import PaginationList from '../Components/PaginationList.vue'
 import BlogList from '../Components/BlogList.vue'
 import TagItem from '../Components/TagItem.vue'
+import Tag from "../Interfaces/Tag";
+import Blog from "../Interfaces/Blog";
+import Link from "../Interfaces/Link";
 
 const props = defineProps({
-  tags: Array
+  tags: Array as () => Array<Tag>
 })
 
-const blogs = ref([])
-const isLoading = ref(false)
-const filter = ref(null)
-const selectedTag = ref(null)
-const links = ref(null)
+const blogs = ref<Array<Blog>>([])
+const isLoading = ref<boolean>(false)
+const filter = ref<string>(null)
+const selectedTag = ref<Tag>(null)
+const links = ref<Array<Link>>(null)
 
-const getPaginatedBlogs = (clickableUrl = null) => {
+const getPaginatedBlogs = (clickableUrl: string = null): void => {
   isLoading.value = true
 
-  let url = new URL(window.location.origin + '/blog/paginate')
+  let url = new URL(`${window.location.origin}/blog/paginate`)
 
   if (clickableUrl) {
     url = new URL(clickableUrl)
@@ -85,7 +88,7 @@ const getPaginatedBlogs = (clickableUrl = null) => {
   }
 
   axios({
-    url,
+    url: url.toString(),
     method: 'GET'
   })
     .then((response) => {
@@ -97,12 +100,12 @@ const getPaginatedBlogs = (clickableUrl = null) => {
     })
 }
 
-const handleSelectedTag = (tag) => {
+const handleSelectedTag = (tag: Tag) => {
   selectedTag.value = tag
   getPaginatedBlogs()
 }
 
-const checkIsActive = (tag) => {
+const checkIsActive = (tag: Tag) => {
   if (selectedTag.value) {
     return selectedTag.value.id === tag.id
   }
@@ -113,5 +116,4 @@ const checkIsActive = (tag) => {
 onMounted(() => {
   getPaginatedBlogs()
 })
-
 </script>

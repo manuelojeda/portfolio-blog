@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Tag;
 use App\Models\Blog;
 use App\Enums\BlogStatus;
+use GrahamCampbell\Markdown\Facades\Markdown;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
@@ -13,9 +14,14 @@ class BlogService
 {
     public function getBlog(string $seo): ?Blog
     {
-        return Blog::query()
+        $blog = Blog::query()
             ->getBlogActiveBlog($seo)
             ->first();
+
+        $content = Markdown::convertToHtml($blog->content);
+        $blog->content = $content->getContent();
+
+        return $blog;
     }
 
     public function getPaginatedBlogs(Request $request): LengthAwarePaginator

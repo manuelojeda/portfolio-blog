@@ -19,16 +19,18 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
+import Link from "../Interfaces/Link";
+
 const props = defineProps({
-  links: Array
+  links: Array as () => Array<Link>
 })
 
 const emits = defineEmits([
   'getPaginatedBlogs'
 ])
 
-const getPaginatedBlogs = (url) => {
+const getPaginatedBlogs = (url: string) => {
   if (url) {
     emits('getPaginatedBlogs', url)
   }

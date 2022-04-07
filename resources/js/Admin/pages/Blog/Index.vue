@@ -2,28 +2,33 @@
   <admin-layout
     :app-name="appName"
   >
-    <section class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <h1 class="mt-2 mb-4">Blogs <small>Index</small></h1>
+    <section class="container p-8 mx-auto">
+      <div class="grid">
+        <div class="grid-cols-12">
+          <h1 class="mt-2 mb-4 text-2xl">Blogs <small>Index</small></h1>
         </div>
-        <div class="col-12 mb-4">
+        <div class="grid-cols-12">
           <div class="float-right">
-            <a href="/admin/blogs/create" class="btn btn-primary">
+            <a href="/admin/blogs/create" class="bg-blue-700 text-white px-5 py-3">
               Create new entry
             </a>
           </div>
         </div>
-        <div class="col-12">
+        <div class="grid-cols-12">
           <blogs-table
             v-if="!isLoading"
             :currentPage="currentPage"
-            :lastPage="lastPage"
             :blogs="blogs"
+            :links="links"
             v-model:filter="filter"
             @emitHandleSetEntryStatus="handleSetEntryStatus"
             @emitHandleDestroyEntry="handleDestroyEntry"
             @emitHandlePageChanged="handlePageChanged"
+          />
+
+          <PaginationList
+            :links="links"
+            @getPaginatedBlogs="fetchBlogsEntries"
           />
         </div>
       </div>
@@ -36,6 +41,7 @@ import axios from 'axios'
 import { askAlert, simpleAlert } from '@/utils/alerts'
 import BlogsTable from '@/Admin/components/Blog/Table.vue'
 import { onMounted, ref } from 'vue';
+import PaginationList from "../../../Public/Components/PaginationList";
 
 const props = defineProps({
   appName: String
@@ -44,7 +50,7 @@ const props = defineProps({
 const blogs = ref([])
 const filter = ref(null)
 const currentPage = ref(1)
-const lastPage = ref(null)
+const links = ref(null)
 const isLoading = ref(true)
 
 async function handleSetEntryStatus (entry) {
@@ -96,24 +102,28 @@ async function handleDestroyEntry (entry) {
   }
 }
 
-function fetchBlogsEntries () {
-  // const url = `?page=${currentPage.value}`
-  const url = new URL(window.location.origin + '/admin/blogs/paginate')
-  url.searchParams.append('page', currentPage.value)
+function fetchBlogsEntries (clickableUrl = null) {
+  let url = new URL(window.location.origin + '/admin/blogs/paginate')
+
+  if (clickableUrl) {
+    url = new URL(clickableUrl)
+  }
 
   if (filter.value) {
     url.searchParams.append('q', filter.value)
   }
 
   isLoading.value = true
-  
+
   axios({
     url,
     method: 'GET'
   })
     .then((response) => {
       blogs.value = response.data.data
-      lastPage.value = response.data.last_page
+      links.value = response.data.links
+    })
+    .finally(() => {
       isLoading.value = false
     })
 }

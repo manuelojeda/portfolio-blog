@@ -20,7 +20,7 @@
 
 <script setup>
 import PartialFooter from '../Components/PartialFooter.vue'
-import PartialHeader from '../Components/PartialHeader.vue'
+import PartialHeader from '../Components/PartialHeader/PartialHeader.vue'
 
 const props = defineProps({
   currentYear: String
